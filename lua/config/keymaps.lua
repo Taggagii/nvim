@@ -15,6 +15,10 @@ vim.keymap.set("t", "<C-_>", "<C-\\><C-n>:FloatermToggle<CR>")
 wk.register({
 	-- e = { vim.cmd.Ex, "Explorer" },
 	l = { ":Lazy<CR>", "Lazy" },
+	b = {
+		name = "Buffer",
+		d = { ":bd<CR>", "Close current buffer" },
+	}
 }, { prefix = "<leader>" })
 
 -- my running mappings
@@ -33,6 +37,7 @@ function SetF5Mapping()
 			{ noremap = true, silent = true })                                                                                                                  -- Do nothing for other filetypes
 	end
 end
+
 
 -- calls a the above when a buffer is read or created
 vim.cmd([[

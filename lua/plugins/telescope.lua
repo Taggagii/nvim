@@ -7,6 +7,7 @@ return {
 		local builtin = require('telescope.builtin')
 		local wk = require("which-key")
 
+
 		wk.register({
 			f = {
 				name = "Find",
@@ -14,7 +15,8 @@ return {
 				g = { builtin.live_grep, "Live Grep" },
 				b = { builtin.buffers, "Buffers" },
 				h = { builtin.help_tags, "Help Tags" }
-			}
+			},
+			[","] = { builtin.buffers, "Search Buffers" }
 		}, { prefix = "<leader>" })
 	end
 }
