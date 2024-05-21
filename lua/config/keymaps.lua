@@ -16,3 +16,25 @@ wk.register({
 	-- e = { vim.cmd.Ex, "Explorer" },
 	l = { ":Lazy<CR>", "Lazy" },
 }, { prefix = "<leader>" })
+
+-- my running mappings
+function SetF5Mapping()
+	local filetype = vim.bo.filetype
+	if filetype == 'tex' then
+		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':VimtexCompile<CR>', { noremap = true, silent = true })
+	elseif filetype == 'c' then -- todo : this doesn't work right
+		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':!gcc "%" -o "%:r.exe" && "%:r.exe"<CR>', { noremap = true, silent = true })
+	elseif filetype == 'python' then
+		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':!python "%"<CR>', { noremap = true })
+	else
+		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':echo "There isn\'t a mapping for the filetype \\"'.. filetype .. '\\""<CR>', { noremap = true, silent = true }) -- Do nothing for other filetypes
+	end
+end
+
+-- calls a the above when a buffer is read or created
+vim.cmd([[
+  augroup SetF5Mappings
+    autocmd!
+    autocmd BufRead,BufNewFile * lua SetF5Mapping()
+  augroup END
+]])
