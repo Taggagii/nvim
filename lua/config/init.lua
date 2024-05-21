@@ -1,4 +1,3 @@
-
 require("config.keymaps")
 
 vim.cmd("set shiftwidth=4")

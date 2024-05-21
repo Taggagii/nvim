@@ -1,6 +1,6 @@
 return {
 	"tpope/vim-fugitive",
-	config = function() 
+	config = function()
 		local wk = require("which-key")
 
 		wk.register({

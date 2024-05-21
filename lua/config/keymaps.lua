@@ -23,11 +23,14 @@ function SetF5Mapping()
 	if filetype == 'tex' then
 		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':VimtexCompile<CR>', { noremap = true, silent = true })
 	elseif filetype == 'c' then -- todo : this doesn't work right
-		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':!gcc "%" -o "%:r.exe" && "%:r.exe"<CR>', { noremap = true, silent = true })
+		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':!gcc "%" -o "%:r.exe" && "%:r.exe"<CR>',
+			{ noremap = true, silent = true })
 	elseif filetype == 'python' then
 		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':!python "%"<CR>', { noremap = true })
 	else
-		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':echo "There isn\'t a mapping for the filetype \\"'.. filetype .. '\\""<CR>', { noremap = true, silent = true }) -- Do nothing for other filetypes
+		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>',
+			':echo "There isn\'t a mapping for the filetype \\"' .. filetype .. '\\""<CR>',
+			{ noremap = true, silent = true })                                                                                                                  -- Do nothing for other filetypes
 	end
 end
 

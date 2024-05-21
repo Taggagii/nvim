@@ -1,17 +1,16 @@
 return {
 	'nvim-treesitter/nvim-treesitter',
-		build = ":TSUpdate",
-		config = function() 
-			require("nvim-treesitter.install").compilers = { "zig", "clang" }
+	build = ":TSUpdate",
+	config = function()
+		require("nvim-treesitter.install").compilers = { "zig", "clang" }
 
-			local configs = require("nvim-treesitter.configs")
+		local configs = require("nvim-treesitter.configs")
 
-			configs.setup({
-				ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
-				sync_install = false,
-				highlight = { enable = true },
-				indent = { enable = true },  
-			})
-
+		configs.setup({
+			ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
+			sync_install = false,
+			highlight = { enable = true },
+			indent = { enable = true },
+		})
 	end
 }

@@ -14,4 +14,4 @@ return {
 			return vim.ui.input(...)
 		end
 	end,
-} 
+}
