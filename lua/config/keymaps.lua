@@ -31,6 +31,8 @@ function SetF5Mapping()
 			{ noremap = true, silent = true })
 	elseif filetype == 'python' then
 		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':!python "%"<CR>', { noremap = true })
+	elseif filetype == 'markdown' then
+		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':MarkdownPreview<CR>', { noremap = true })
 	else
 		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>',
 			':echo "There isn\'t a mapping for the filetype \\"' .. filetype .. '\\""<CR>',
@@ -49,5 +51,4 @@ vim.cmd([[
 
 -- control backspace
 vim.keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true });
-
 
