@@ -46,3 +46,8 @@ vim.cmd([[
     autocmd BufRead,BufNewFile * lua SetF5Mapping()
   augroup END
 ]])
+
+-- control backspace
+vim.keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true });
+
+
