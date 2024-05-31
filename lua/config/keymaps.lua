@@ -18,6 +18,11 @@ wk.register({
 	b = {
 		name = "Buffer",
 		d = { ":bd<CR>", "Close current buffer" },
+	},
+	q = {
+		name = "Quit",
+		w = { ":wq<CR>", "Write and close current file"},
+		q = { ":q<CR>", "Quit the current file without saving"},
 	}
 }, { prefix = "<leader>" })
 
