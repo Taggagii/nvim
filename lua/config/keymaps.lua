@@ -35,7 +35,7 @@ function SetF5Mapping()
 		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':!gcc "%" -o "%:r.exe" && "%:r.exe"<CR>',
 			{ noremap = true, silent = true })
 	elseif filetype == 'python' then
-		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':!python "%"<CR>', { noremap = true })
+		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':w | !python "%"<CR>', { noremap = true })
 	elseif filetype == 'markdown' then
 		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':MarkdownPreview<CR>', { noremap = true })
 	else
