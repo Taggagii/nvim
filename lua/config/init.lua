@@ -9,3 +9,6 @@ vim.opt.relativenumber = true
 vim.opt.signcolumn = "number"
 
 vim.opt.clipboard:append("unnamedplus")
+
+vim.cmd("set encoding=UTF-8")
+
