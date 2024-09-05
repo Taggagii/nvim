@@ -1,8 +1,11 @@
 return {
 	"shortcuts/no-neck-pain.nvim",
-	config = {
-		autocmds = {
-			enableOnVimEnter = true
-		}
-	}
+	config = function ()
+		require('no-neck-pain').setup({
+			width = 200,
+			autocmds = {
+				enableOnVimEnter = true
+			},
+		})
+	end
 }
