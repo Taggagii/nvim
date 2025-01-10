@@ -40,6 +40,8 @@ function SetF5Mapping()
 		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':MarkdownPreview<CR>', { noremap = true })
 	elseif filetype == 'sh' then
 		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':!./"%"<CR>', { noremap = true })
+	elseif filetype == 'st' then
+		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>', ':!gst "%"<CR>', { noremap = true })
 	else
 		vim.api.nvim_buf_set_keymap(0, 'n', '<F5>',
 			':echo "There isn\'t a mapping for the filetype \\"' .. filetype .. '\\""<CR>',
