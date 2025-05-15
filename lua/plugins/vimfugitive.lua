@@ -3,13 +3,11 @@ return {
 	config = function()
 		local wk = require("which-key")
 
-		wk.register({
-			g = {
-				name = "Git",
-				s = { vim.cmd.Git, "Open git information" },
-				d = { ":Gdiff<CR>", "Open a merge split" },
-				D = { ":Gdiffsplit!<CR>", "Open a three way merge split" }
-			}
-		}, { prefix = "<leader>" })
+		wk.add({
+			{ "<leader>g", group = "Git" },
+			{ "<leader>gs", vim.cmd.Git, desc = "Open git information" },
+			{ "<leader>gd", ":Gdiff<CR>", desc = "Open a merge split" },
+			{ "<leader>gD", ":Gdiffsplit!<CR>", desc = "Open a three way merge split" },
+		})
 	end
 }

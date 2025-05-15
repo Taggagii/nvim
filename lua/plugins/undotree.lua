@@ -5,8 +5,8 @@ return {
 
 		vim.g.undotree_DiffCommand = "FC"
 
-		wk.register({
-			u = { vim.cmd.UndotreeToggle, "Toggle Undotree" }
-		}, { prefix = "<leader>" })
+		wk.add({
+			{ "<leader>u", vim.cmd.UndotreeToggle, desc = "Toggle Undotree" },
+		})
 	end
 }
