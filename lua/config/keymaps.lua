@@ -13,17 +13,17 @@ vim.keymap.set("n", "<C-_>", ":FloatermToggle<CR>")
 vim.keymap.set("t", "<C-_>", "<C-\\><C-n>:FloatermToggle<CR>")
 
 wk.register({
-	-- e = { vim.cmd.Ex, "Explorer" },
-	l = { ":Lazy<CR>", "Lazy" },
-	b = {
+	-- ["e"] = { function() vim.cmd.Ex() end, "Explorer" },
+	["l"] = { "<cmd>Lazy<CR>", "Lazy" },
+	["b"] = {
 		name = "Buffer",
-		d = { ":bd<CR>", "Close current buffer" },
+		["d"] = { "<cmd>bd<CR>", "Close current buffer" },
 	},
-	q = {
+	["q"] = {
 		name = "Quit",
-		w = { ":wq<CR>", "Write and close current file"},
-		q = { ":q<CR>", "Quit the current file without saving"},
-	}
+		["w"] = { "<cmd>wq<CR>", "Write and close current file" },
+		["q"] = { "<cmd>q<CR>", "Quit the current file without saving" },
+	},
 }, { prefix = "<leader>" })
 
 -- my running mappings
