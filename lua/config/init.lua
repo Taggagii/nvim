@@ -13,3 +13,6 @@ vim.opt.clipboard:append("unnamedplus")
 
 vim.cmd("set encoding=UTF-8")
 
+vim.cmd.colorscheme "catppuccin"
+
+
