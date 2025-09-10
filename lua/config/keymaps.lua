@@ -61,3 +61,28 @@ vim.cmd([[
 -- control backspace
 vim.keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true });
 
+-- This function prompts for input and runs :'<,'>CodeCompanion {input} on the current visual selection
+function CodeCompanionPrompt()
+  -- Save current visual selection marks
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+
+  vim.ui.input({
+    prompt = 'CodeCompanion command:',
+    default = '',
+  }, function(input)
+    if input and input ~= '' then
+      -- Reselect the visual selection
+      vim.fn.setpos("'<", start_pos)
+      vim.fn.setpos("'>", end_pos)
+      -- Run the command on the selection
+      vim.cmd("'<,'>CodeCompanion " .. input)
+    end
+  end)
+end
+
+-- Map to <leader>cc in visual mode (you can change this mapping)
+vim.keymap.set('v', '<leader>cc', function()
+  CodeCompanionPrompt()
+end, { noremap = true, silent = true, desc = 'CodeCompanion prompt on selection' })
+
