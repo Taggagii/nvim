@@ -8,9 +8,9 @@ local wk = require('which-key')
 -- vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 -- vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
--- floating terminal
-vim.keymap.set("n", "<C-_>", ":FloatermToggle<CR>")
-vim.keymap.set("t", "<C-_>", "<C-\\><C-n>:FloatermToggle<CR>")
+-- -- float term stuff
+-- vim.keymap.set("n", "<C-_>", ":FloatermToggle<CR>")
+-- vim.keymap.set("t", "<C-_>", "<C-\\><C-n>:FloatermToggle<CR>")
 
 wk.add({
     { "<leader>l", "<cmd>Lazy<CR>", desc = "Lazy" },
@@ -19,6 +19,11 @@ wk.add({
     { "<leader>q", group = "Quit" },
     { "<leader>qw", "<cmd>wq<CR>", desc = "Write and close current file" },
     { "<leader>qq", "<cmd>q<CR>", desc = "Quit the current file without saving" },
+    { "<leader>m", group = "Mason Stuff" },
+    { "<leader>mm", "<cmd>Mason<CR>", desc = "Open Mason Configuration" },
+    { "<leader>c", group = "Code Companion Stuff" },
+	{ "<leader>cc", "<cmd>CodeCompanionChat<CR>", desc = "Open Chat" },
+	{ "<leader>ci", "<cmd>CodeCompanion<CR>", desc = "Inline" },
 }, { prefix = "<leader>" })
 
 -- my running mappings
