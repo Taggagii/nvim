@@ -23,7 +23,7 @@ wk.add({
     { "<leader>mm", "<cmd>Mason<CR>", desc = "Open Mason Configuration" },
     { "<leader>c", group = "Code Companion Stuff" },
 	{ "<leader>cc", "<cmd>CodeCompanionChat<CR>", desc = "Open Chat" },
-	{ "<leader>ci", "<cmd>CodeCompanion<CR>", desc = "Inline" },
+	{ "<leader>ca", "<cmd>CodeCompanionChat Add<CR>", desc = "Add some code to the chat" },
 }, { prefix = "<leader>" })
 
 -- my running mappings
