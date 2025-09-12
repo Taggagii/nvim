@@ -13,16 +13,7 @@ return {
 	},
 
 	config = function()
-		vim.api.nvim_create_autocmd('LspAttach', {
-			desc = 'LSP actions',
-			callback = function(event)
-				local opts = { buffer = event.buf }
 
-				-- these will be buffer-local keybindings
-				-- because they only work if you have an active language server
-
-			end
-		})
 
 		local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -34,34 +25,20 @@ return {
 
 		require('mason').setup({})
 
-       require('mason-lspconfig').setup({
-               ensure_installed = { "lua_ls", "tsserver", "eslint" },
-               handlers = {
-                       default_setup,
-               },
-       })
+		require('mason-lspconfig').setup({
+			ensure_installed = { "lua_ls" },
+			handlers = {
+				default_setup,
+			},
+		})
 
-       -- TypeScript (tsserver) setup
-       require('lspconfig').tsserver.setup({
-               capabilities = lsp_capabilities,
-       })
-
-       -- ESLint setup for JS/TS linting and formatting
-       require('lspconfig').eslint.setup({
-               capabilities = lsp_capabilities,
-               settings = {
-                       format = { enable = true },
-               },
-               on_attach = function(client, bufnr)
-                       -- Enable formatting on save for JS/TS
-                       if client.server_capabilities.documentFormattingProvider then
-                               vim.api.nvim_create_autocmd("BufWritePre", {
-                                       buffer = bufnr,
-                                       command = "lua vim.lsp.buf.format({ async = false })"
-                               })
-                       end
-               end,
-       })
+		-- ESLint setup for JS/TS linting and formatting
+		require('lspconfig').eslint.setup({
+			capabilities = lsp_capabilities,
+			settings = {
+				format = { enable = true },
+			},
+		})
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 		local cmp = require('cmp')
@@ -104,8 +81,8 @@ return {
 				{ name = 'nvim_lsp' },
 				{ name = 'luasnip' },
 			}, {
-				{ name = 'buffer' },
-			})
+					{ name = 'buffer' },
+				})
 		})
 
 		-- custom stuff goes here

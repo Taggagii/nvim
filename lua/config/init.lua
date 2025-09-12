@@ -15,4 +15,12 @@ vim.cmd("set encoding=UTF-8")
 
 vim.cmd.colorscheme "catppuccin-mocha"
 
+-- Enable inline diagnostics and underlines globally
+vim.diagnostic.config({
+  virtual_text = true,   -- Show inline errors
+  underline = true,     -- Underline errors
+  signs = true,         -- Show signs in the gutter
+  update_in_insert = false,
+})
+
 
