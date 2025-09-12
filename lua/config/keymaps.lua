@@ -13,7 +13,10 @@ local wk = require('which-key')
 -- vim.keymap.set("t", "<C-_>", "<C-\\><C-n>:FloatermToggle<CR>")
 
 wk.add({
-	{ "<leader>l", "<cmd>Lazy<CR>", desc = "Lazy" },
+	-- Lazy stuff
+	{ "<leader>l", "<cmd>Lazy<CR>", desc = "Lazy" }, -- moved to avoid conflict with LSP group
+
+	-- Buffer stuff
 	{ "<leader>b", group = "Buffer" },
 	{ "<leader>bd", "<cmd>bd<CR>", desc = "Close current buffer" },
 	{ "<leader>q", group = "Quit" },
@@ -28,6 +31,16 @@ wk.add({
 	{ "<leader>ce", "<cmd>CodeCompanion /explain<CR>", desc = "Explain the selected code using Code Companion", mode = { "v" } },
 	{ "<leader>ca", "<cmd>CodeCompanionAction<CR>", desc = "Run a Code Companion action on selection or line", mode = { "n", "v" } },
 	{ "<leader>cf", "<cmd>CodeCompanion /fix @{insert_edit_into_file}<CR>", desc = "Fix selected code and insert edit into file", mode = { "v" }},
+
+    -- ESLint group and actions (now under <leader>s)
+    { "<leader>s", group = "ESLint" },
+    { "<leader>sf", function() vim.lsp.buf.format({ async = true }) end, desc = "Format with ESLint" },
+    { "<leader>sfx", function() vim.lsp.buf.execute_command({ command = "eslint.applyAllFixes" }) end, desc = "ESLint: Fix All" },
+    { "<leader>sr", function() vim.cmd('LspRestart eslint') end, desc = "Restart ESLint server" },
+    { "<leader>sd", function() vim.diagnostic.open_float() end, desc = "Show ESLint diagnostics (float)" },
+    { "<leader>si", function() vim.lsp.buf.code_action({ filter = function(action)
+        return action and action.title and action.title:lower():match("disable")
+    end, apply = true }) end, desc = "ESLint: Disable rule for this line (if available)" },
 }, { prefix = "<leader>" })
 
 -- my running mappings

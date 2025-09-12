@@ -21,19 +21,6 @@ return {
 				-- these will be buffer-local keybindings
 				-- because they only work if you have an active language server
 
-				vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-				vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-				vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-				vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-				vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-				vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-				vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-				vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-				vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-				vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-
-				vim.keymap.set("n", "g]", vim.diagnostic.goto_next, { desc = "Go to next warning" })
-				vim.keymap.set("n", "g[", vim.diagnostic.goto_prev, { desc = "Go to previous warning" })
 			end
 		})
 
@@ -46,12 +33,35 @@ return {
 		end
 
 		require('mason').setup({})
-		require('mason-lspconfig').setup({
-			ensure_installed = { "lua_ls" },
-			handlers = {
-				default_setup,
-			},
-		})
+
+       require('mason-lspconfig').setup({
+               ensure_installed = { "lua_ls", "tsserver", "eslint" },
+               handlers = {
+                       default_setup,
+               },
+       })
+
+       -- TypeScript (tsserver) setup
+       require('lspconfig').tsserver.setup({
+               capabilities = lsp_capabilities,
+       })
+
+       -- ESLint setup for JS/TS linting and formatting
+       require('lspconfig').eslint.setup({
+               capabilities = lsp_capabilities,
+               settings = {
+                       format = { enable = true },
+               },
+               on_attach = function(client, bufnr)
+                       -- Enable formatting on save for JS/TS
+                       if client.server_capabilities.documentFormattingProvider then
+                               vim.api.nvim_create_autocmd("BufWritePre", {
+                                       buffer = bufnr,
+                                       command = "lua vim.lsp.buf.format({ async = false })"
+                               })
+                       end
+               end,
+       })
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 		local cmp = require('cmp')
