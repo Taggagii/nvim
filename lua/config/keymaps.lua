@@ -13,17 +13,21 @@ local wk = require('which-key')
 -- vim.keymap.set("t", "<C-_>", "<C-\\><C-n>:FloatermToggle<CR>")
 
 wk.add({
-    { "<leader>l", "<cmd>Lazy<CR>", desc = "Lazy" },
-    { "<leader>b", group = "Buffer" },
-    { "<leader>bd", "<cmd>bd<CR>", desc = "Close current buffer" },
-    { "<leader>q", group = "Quit" },
-    { "<leader>qw", "<cmd>wq<CR>", desc = "Write and close current file" },
-    { "<leader>qq", "<cmd>q<CR>", desc = "Quit the current file without saving" },
-    { "<leader>m", group = "Mason Stuff" },
-    { "<leader>mm", "<cmd>Mason<CR>", desc = "Open Mason Configuration" },
-    { "<leader>c", group = "Code Companion Stuff" },
-	{ "<leader>cc", "<cmd>CodeCompanionChat<CR>", desc = "Open Chat" },
-	{ "<leader>ca", "<cmd>CodeCompanionChat Add<CR>", desc = "Add some code to the chat" },
+	{ "<leader>l", "<cmd>Lazy<CR>", desc = "Lazy" },
+	{ "<leader>b", group = "Buffer" },
+	{ "<leader>bd", "<cmd>bd<CR>", desc = "Close current buffer" },
+	{ "<leader>q", group = "Quit" },
+	{ "<leader>qw", "<cmd>wq<CR>", desc = "Write and close current file" },
+	{ "<leader>qq", "<cmd>q<CR>", desc = "Quit the current file without saving" },
+	{ "<leader>m", group = "Mason Stuff" },
+	{ "<leader>mm", "<cmd>Mason<CR>", desc = "Open Mason Configuration" },
+	{ "<leader>c", group = "Code Companion Stuff" },
+	-- Open CodeCompanion chat with buffer context
+	{ "<leader>cc", "<cmd>CodeCompanionChat Toggle<CR>", desc = "Toggle the chat open or closed", mode = { "v", "n" } },
+	{ "<leader>cp", "<cmd>CodeCompanionChat Add<CR>", desc = "Add visually selected code to chat", mode = { "v" } },
+	{ "<leader>ce", "<cmd>CodeCompanion /explain<CR>", desc = "Explain the selected code using Code Companion", mode = { "v" } },
+	{ "<leader>ca", "<cmd>CodeCompanionAction<CR>", desc = "Run a Code Companion action on selection or line", mode = { "n", "v" } },
+	{ "<leader>cf", "<cmd>CodeCompanion /fix @{insert_edit_into_file}<CR>", desc = "Fix selected code and insert edit into file", mode = { "v" }},
 }, { prefix = "<leader>" })
 
 -- my running mappings
@@ -53,8 +57,8 @@ end
 -- calls a the above when a buffer is read or created
 vim.cmd([[
   augroup SetF5Mappings
-    autocmd!
-    autocmd BufRead,BufNewFile * lua SetF5Mapping()
+  autocmd!
+  autocmd BufRead,BufNewFile * lua SetF5Mapping()
   augroup END
 ]])
 
