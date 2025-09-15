@@ -1,4 +1,5 @@
 local wk = require('which-key')
+local telescope_builtin = require('telescope.builtin')
 
 -- -- that alt move behaviour
 -- vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
@@ -51,6 +52,15 @@ wk.add({
     { "<leader>si", function() vim.lsp.buf.code_action({ filter = function(action)
         return action and action.title and action.title:lower():match("disable")
     end, apply = true }) end, desc = "ESLint: Disable rule for this line (if available)" },
+
+	-- nvimtree 
+	{ "<leader>,", telescope_builtin.buffers, desc = "Search Buffers" },
+	{ "<leader>f", group = "Find" },
+	{ "<leader>fb", telescope_builtin.buffers, desc = "Buffers" },
+	{ "<leader>ff", telescope_builtin.find_files, desc = "File" },
+	{ "<leader>fg", telescope_builtin.live_grep, desc = "Live Grep" },
+	{ "<leader>fh", telescope_builtin.help_tags, desc = "Help Tags" },
+
 }, { prefix = "<leader>" })
 
 -- my running mappings

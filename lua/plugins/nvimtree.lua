@@ -7,7 +7,11 @@ return {
 
 		vim.opt.termguicolors = true
 
-		require("nvim-tree").setup()
+        require("nvim-tree").setup({
+            filters = {
+                dotfiles = false,
+            },
+        })
 	end
 
 }
