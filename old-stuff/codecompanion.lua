@@ -7,6 +7,7 @@ return {
 	opts = {
 		log_level = "DEBUG",
 		strategies = {
+			inline = {},
 			chat = {
 				variables={
 					["buffer"] = {

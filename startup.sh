@@ -2,7 +2,7 @@
 
 brew install ripgrep
 
-brew install --cask font-ubuntu-mono-nerd-font
+brew install --cask font-meslo-for-powerlevel10k
 
 echo "Set your terminal font to nerd font"
 

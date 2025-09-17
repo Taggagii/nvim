@@ -1,18 +1,6 @@
 local wk = require('which-key')
 local telescope_builtin = require('telescope.builtin')
 
--- -- that alt move behaviour
--- vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
--- vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
--- vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
--- vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
--- vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
--- vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
-
--- -- float term stuff
--- vim.keymap.set("n", "<C-_>", ":FloatermToggle<CR>")
--- vim.keymap.set("t", "<C-_>", "<C-\\><C-n>:FloatermToggle<CR>")
-
 wk.add({
 	-- Lazy stuff
 	{ "<leader>l", "<cmd>Lazy<CR>", desc = "Lazy" }, -- moved to avoid conflict with LSP group
@@ -36,12 +24,6 @@ wk.add({
 	{ "<leader>m", group = "Mason Stuff" },
 	{ "<leader>mm", "<cmd>Mason<CR>", desc = "Open Mason Configuration" },
 	{ "<leader>c", group = "Code Companion Stuff" },
-	-- Open CodeCompanion chat with buffer context
-	{ "<leader>cc", "<cmd>CodeCompanionChat Toggle<CR>", desc = "Toggle the chat open or closed", mode = { "v", "n" } },
-	{ "<leader>cp", "<cmd>CodeCompanionChat Add<CR>", desc = "Add visually selected code to chat", mode = { "v" } },
-	{ "<leader>ce", "<cmd>CodeCompanion /explain<CR>", desc = "Explain the selected code using Code Companion", mode = { "v" } },
-	{ "<leader>ca", "<cmd>CodeCompanionAction<CR>", desc = "Run a Code Companion action on selection or line", mode = { "n", "v" } },
-	{ "<leader>cf", "<cmd>CodeCompanion /fix @{insert_edit_into_file}<CR>", desc = "Fix selected code and insert edit into file", mode = { "v" }},
 
     -- ESLint group and actions (now under <leader>s)
     { "<leader>s", group = "ESLint" },
