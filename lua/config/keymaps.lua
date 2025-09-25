@@ -1,19 +1,23 @@
 local wk = require('which-key')
 local telescope_builtin = require('telescope.builtin')
+local oil = require("oil")
 
 wk.add({
 	-- Lazy stuff
 	{ "<leader>l", "<cmd>Lazy<CR>", desc = "Lazy" }, -- moved to avoid conflict with LSP group
 
 	-- NvimTree
-	{ "<leader>e", function()
-		local ok, nvimtree = pcall(require, "nvim-tree.api")
-		if ok and nvimtree then
-			nvimtree.tree.toggle()
-		else
-			vim.notify("nvim-tree is not loaded", vim.log.levels.WARN)
-		end
-	end, desc = "Toggle Explorer" },
+	-- { "<leader>e", function()
+	-- 	local ok, nvimtree = pcall(require, "nvim-tree.api")
+	-- 	if ok and nvimtree then
+	-- 		nvimtree.tree.toggle()
+	-- 	else
+	-- 		vim.notify("nvim-tree is not loaded", vim.log.levels.WARN)
+	-- 	end
+	-- end, desc = "Toggle Explorer" },
+
+	-- Oil
+	{ "<leader>e", "<cmd>Oil<CR>"},
 
 	-- Buffer stuff
 	{ "<leader>b", group = "Buffer" },
@@ -25,15 +29,15 @@ wk.add({
 	{ "<leader>mm", "<cmd>Mason<CR>", desc = "Open Mason Configuration" },
 	{ "<leader>c", group = "Code Companion Stuff" },
 
-    -- ESLint group and actions (now under <leader>s)
-    { "<leader>s", group = "ESLint" },
-    { "<leader>sf", function() vim.lsp.buf.format({ async = true }) end, desc = "Format with ESLint" },
-    { "<leader>sfx", function() vim.lsp.buf.execute_command({ command = "eslint.applyAllFixes" }) end, desc = "ESLint: Fix All" },
-    { "<leader>sr", function() vim.cmd('LspRestart eslint') end, desc = "Restart ESLint server" },
-    { "<leader>sd", function() vim.diagnostic.open_float() end, desc = "Show ESLint diagnostics (float)" },
-    { "<leader>si", function() vim.lsp.buf.code_action({ filter = function(action)
-        return action and action.title and action.title:lower():match("disable")
-    end, apply = true }) end, desc = "ESLint: Disable rule for this line (if available)" },
+	-- ESLint group and actions (now under <leader>s)
+	{ "<leader>s", group = "ESLint" },
+	{ "<leader>sf", function() vim.lsp.buf.format({ async = true }) end, desc = "Format with ESLint" },
+	{ "<leader>sfx", function() vim.lsp.buf.execute_command({ command = "eslint.applyAllFixes" }) end, desc = "ESLint: Fix All" },
+	{ "<leader>sr", function() vim.cmd('LspRestart eslint') end, desc = "Restart ESLint server" },
+	{ "<leader>sd", function() vim.diagnostic.open_float() end, desc = "Show ESLint diagnostics (float)" },
+	{ "<leader>si", function() vim.lsp.buf.code_action({ filter = function(action)
+		return action and action.title and action.title:lower():match("disable")
+	end, apply = true }) end, desc = "ESLint: Disable rule for this line (if available)" },
 
 	-- nvimtree 
 	{ "<leader>,", telescope_builtin.buffers, desc = "Search Buffers" },
