@@ -11,7 +11,7 @@ wk.add({
 	-- 	local ok, nvimtree = pcall(require, "nvim-tree.api")
 	-- 	if ok and nvimtree then
 	-- 		nvimtree.tree.toggle()
-	-- 	else
+	-- 	elsekeymp
 	-- 		vim.notify("nvim-tree is not loaded", vim.log.levels.WARN)
 	-- 	end
 	-- end, desc = "Toggle Explorer" },
@@ -24,8 +24,7 @@ wk.add({
 	{ "<leader>bd", "<cmd>bd<CR>", desc = "Close current buffer" },
 	{ "<leader>q", group = "Quit" },
 	{ "<leader>qw", "<cmd>wq<CR>", desc = "Write and close current file" },
-	{ "<leader>qq", "<cmd>q<CR>", desc = "Quit the current file without saving" },
-	{ "<leader>m", group = "Mason Stuff" },
+	{ "<leader>qq", "<cmd>q<CR>", desc = "Quit the current file without saving" }, { "<leader>m", group = "Mason Stuff" },
 	{ "<leader>mm", "<cmd>Mason<CR>", desc = "Open Mason Configuration" },
 	{ "<leader>c", group = "Code Companion Stuff" },
 
@@ -39,7 +38,7 @@ wk.add({
 		return action and action.title and action.title:lower():match("disable")
 	end, apply = true }) end, desc = "ESLint: Disable rule for this line (if available)" },
 
-	-- nvimtree 
+	-- Telescope 
 	{ "<leader>,", telescope_builtin.buffers, desc = "Search Buffers" },
 	{ "<leader>f", group = "Find" },
 	{ "<leader>fb", telescope_builtin.buffers, desc = "Buffers" },
@@ -47,6 +46,11 @@ wk.add({
 	{ "<leader>fg", telescope_builtin.live_grep, desc = "Live Grep" },
 	{ "<leader>fh", telescope_builtin.help_tags, desc = "Help Tags" },
 
+	-- Resizing splits
+	{ "+", ":resize +2<CR>", desc = "Increase split height" },
+	{ "_", ":resize -2<CR>", desc = "Decrease split height" },
+	{ ">", ":vertical resize +2<CR>", desc = "Increase split width" },
+	{ "<", ":vertical resize -2<CR>", desc = "Decrease split width" },
 }, { prefix = "<leader>" })
 
 -- my running mappings
