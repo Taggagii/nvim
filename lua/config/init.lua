@@ -1,7 +1,7 @@
 require("config.keymaps")
 
-vim.cmd("set shiftwidth=4")
-vim.cmd("set tabstop=4")
+-- vim.cmd("set shiftwidth=4")
+-- vim.cmd("set tabstop=4")
 vim.cmd("set scrolloff=40")
 vim.cmd("set ignorecase smartcase")
 
