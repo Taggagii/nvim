@@ -28,15 +28,44 @@ wk.add({
 	{ "<leader>mm", "<cmd>Mason<CR>", desc = "Open Mason Configuration" },
 	{ "<leader>c", group = "Code Companion Stuff" },
 
-	-- ESLint group and actions (now under <leader>s)
+	-- ESLint group and actions
 	{ "<leader>s", group = "ESLint" },
-	{ "<leader>sf", function() vim.lsp.buf.format({ async = true }) end, desc = "Format with ESLint" },
-	{ "<leader>sfx", function() vim.lsp.buf.execute_command({ command = "eslint.applyAllFixes" }) end, desc = "ESLint: Fix All" },
-	{ "<leader>sr", function() vim.cmd('LspRestart eslint') end, desc = "Restart ESLint server" },
-	{ "<leader>sd", function() vim.diagnostic.open_float() end, desc = "Show ESLint diagnostics (float)" },
-	{ "<leader>si", function() vim.lsp.buf.code_action({ filter = function(action)
-		return action and action.title and action.title:lower():match("disable")
-	end, apply = true }) end, desc = "ESLint: Disable rule for this line (if available)" },
+
+	-- Format current file (using ESLint if it's set up as the formatter)
+	{ "<leader>sf", function()
+		vim.lsp.buf.format({ async = true })
+	end, desc = "Format with ESLint" },
+
+	-- Fix all fixable issues in the current file using ESLint
+	{ "<leader>sfx", function()
+		vim.lsp.buf.code_action({
+			apply = true,
+			context = {
+				only = { "source.fixAll.eslint" },
+				diagnostics = {},
+			},
+		})
+	end, desc = "ESLint: Fix All" },
+
+	-- Restart the ESLint language server (works if named 'eslint')
+	{ "<leader>sr", function()
+		vim.cmd('LspRestart eslint')
+	end, desc = "Restart ESLint server" },
+
+	-- Show floating diagnostics at cursor
+	{ "<leader>sd", function()
+		vim.diagnostic.open_float()
+	end, desc = "Show ESLint diagnostics (float)" },
+
+	-- Apply code action to disable rule for this line (if available)
+	{ "<leader>si", function()
+		vim.lsp.buf.code_action({
+			filter = function(action)
+				return action and action.title and action.title:lower():match("disable")
+			end,
+			apply = true
+		})
+	end, desc = "ESLint: Disable rule for this line (if available)" },
 
 	-- Telescope 
 	{ "<leader>,", telescope_builtin.buffers, desc = "Search Buffers" },
