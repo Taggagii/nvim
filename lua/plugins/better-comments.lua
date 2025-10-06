@@ -15,14 +15,14 @@ return {
 					fg = "#f44747",
 					bg = "",
 					bold = true,
-					virtual_text = "",
+					virtual_text = "",
 				},
 				{
 					name = "?",
 					fg = "#add8e6",
 					bg = "",
 					bold = true,
-					virtual_text = "?",
+					virtual_text = "",
 				},
 				{
 					name = "*",
