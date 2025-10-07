@@ -82,7 +82,8 @@ wk.add({
 	{ "<", ":vertical resize -2<CR>", desc = "Decrease split width" },
 
 	-- LSP 
-	{ "<leader>r", ":lua vim.lsp.buf.rename()<CR>", desc = "Rename variable"},
+	{ "gD", vim.lsp.buf.definition, desc="Go to Global Definition"}
+
 }, { prefix = "<leader>" })
 
 -- my running mappings
