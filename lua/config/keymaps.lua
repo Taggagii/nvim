@@ -1,6 +1,7 @@
 local wk = require('which-key')
 local telescope_builtin = require('telescope.builtin')
 local oil = require("oil")
+local harpoon = require("harpoon")
 
 wk.add({
 	-- Lazy stuff
@@ -82,7 +83,17 @@ wk.add({
 	{ "<", ":vertical resize -2<CR>", desc = "Decrease split width" },
 
 	-- LSP 
-	{ "gD", vim.lsp.buf.definition, desc="Go to Global Definition"}
+	{ "gD", vim.lsp.buf.definition, desc="Go to Global Definition"},
+
+	-- Harpoon
+	{ "<leader>h", group = "Harpoon" },
+	{ "<leader>ha", function() require("harpoon"):list():add() end, desc = "harpoon file", },
+	{ "<leader>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "harpoon quick menu", },
+	{ "<leader>1", function() require("harpoon"):list():select(1) end, desc = "Harpoon to file 1", },
+	{ "<leader>2", function() require("harpoon"):list():select(2) end, desc = "Harpoon to file 2", },
+	{ "<leader>3", function() require("harpoon"):list():select(3) end, desc = "Harpoon to file 3", },
+	{ "<leader>4", function() require("harpoon"):list():select(4) end, desc = "Harpoon to file 4", },
+	{ "<leader>5", function() require("harpoon"):list():select(5) end, desc = "Harpoon to file 5", },
 
 }, { prefix = "<leader>" })
 
