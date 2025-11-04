@@ -16,9 +16,6 @@ vim.opt.clipboard:append("unnamedplus")
 
 vim.cmd("set encoding=UTF-8")
 
--- vim.cmd.colorscheme "catppuccin-mocha"
-vim.cmd.colorscheme "kanagawa"
-
 -- Enable inline diagnostics and underlines globally
 vim.diagnostic.config({
   virtual_text = true,   -- Show inline errors
