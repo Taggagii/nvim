@@ -1,5 +1,4 @@
 local wk = require('which-key')
-local telescope_builtin = require('telescope.builtin')
 local oil = require("oil")
 local harpoon = require("harpoon")
 
@@ -67,14 +66,6 @@ wk.add({
 			apply = true
 		})
 	end, desc = "ESLint: Disable rule for this line (if available)" },
-
-	-- Telescope 
-	{ "<leader>,", telescope_builtin.buffers, desc = "Search Buffers" },
-	{ "<leader>f", group = "Find" },
-	{ "<leader>fb", telescope_builtin.buffers, desc = "Buffers" },
-	{ "<leader>ff", telescope_builtin.find_files, desc = "File" },
-	{ "<leader>fg", telescope_builtin.live_grep, desc = "Live Grep" },
-	{ "<leader>fh", telescope_builtin.help_tags, desc = "Help Tags" },
 
 	-- Resizing splits
 	{ "+", ":resize +2<CR>", desc = "Increase split height" },
