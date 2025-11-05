@@ -16,7 +16,6 @@ return {
 			ensure_installed = {
 				"ts_ls",
 				"pyright",
-				"eslint",
 			},
 			handlers = {
 				function(server)

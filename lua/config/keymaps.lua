@@ -60,8 +60,8 @@ wk.add({
 	-- Resizing splits
 	{ "+", ":resize +2<CR>", desc = "Increase split height" },
 	{ "_", ":resize -2<CR>", desc = "Decrease split height" },
-	{ ">", ":vertical resize +2<CR>", desc = "Increase split width" },
-	{ "<", ":vertical resize -2<CR>", desc = "Decrease split width" },
+	{ "=", ":vertical resize +2<CR>", desc = "Increase split width" },
+	{ "-", ":vertical resize -2<CR>", desc = "Decrease split width" },
 
 	-- LSP 
 	{ "gD", vim.lsp.buf.definition, desc="Go to Global Definition"},
