@@ -6,16 +6,6 @@ wk.add({
 	-- Lazy stuff
 	{ "<leader>l", "<cmd>Lazy<CR>", desc = "Lazy" }, -- moved to avoid conflict with LSP group
 
-	-- NvimTree
-	-- { "<leader>e", function()
-	-- 	local ok, nvimtree = pcall(require, "nvim-tree.api")
-	-- 	if ok and nvimtree then
-	-- 		nvimtree.tree.toggle()
-	-- 	elsekeymp
-	-- 		vim.notify("nvim-tree is not loaded", vim.log.levels.WARN)
-	-- 	end
-	-- end, desc = "Toggle Explorer" },
-
 	-- Oil
 	{ "<leader>e", "<cmd>Oil<CR>"},
 

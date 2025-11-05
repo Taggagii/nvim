@@ -1,4 +1,4 @@
 return {
 	"nvim-tree/nvim-web-devicons",
-	lasy = true
+	lazy = true
 }
