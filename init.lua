@@ -14,5 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	command = "setlocal formatoptions-=o formatoptions-=r",
+});
+
 require("lazy").setup("plugins")
 require("config")

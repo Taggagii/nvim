@@ -14,29 +14,26 @@ wk.add({
 	{ "<leader>bd", "<cmd>bd<CR>", desc = "Close current buffer" },
 	{ "<leader>q", group = "Quit" },
 	{ "<leader>qw", "<cmd>wq<CR>", desc = "Write and close current file" },
-	{ "<leader>qq", "<cmd>q<CR>", desc = "Quit the current file without saving" }, { "<leader>m", group = "Mason Stuff" },
+	{ "<leader>qq", "<cmd>q<CR>", desc = "Quit the current file without saving" },
+	{ "<leader>m", group = "Mason Stuff" },
 	{ "<leader>mm", "<cmd>Mason<CR>", desc = "Open Mason Configuration" },
 	{ "<leader>c", group = "Code Companion Stuff" },
 
 	-- ESLint group and actions
 	{ "<leader>s", group = "ESLint" },
 
-	-- Format current file (using ESLint if it's set up as the formatter)
-	{ "<leader>sf", function()
-		vim.lsp.buf.format({ async = true })
-	end, desc = "Format with ESLint" },
-
-	-- Fix all fixable issues in the current file using ESLint
-	{ "<leader>sfx", function()
-		vim.lsp.buf.code_action({
-			apply = true,
-			context = {
-				only = { "source.fixAll.eslint" },
-				diagnostics = {},
-			},
-		})
-	end, desc = "ESLint: Fix All" },
-
+	{ "<leader>sfx", "<cmd>LspEslintFixAll<CR>", desc = "Auto Fix All"},
+	-- -- Fix all fixable issues in the current file using ESLint
+	-- { "<leader>sf", function()
+	-- 	vim.lsp.buf.code_action({
+	-- 		apply = true,
+	-- 		context = {
+	-- 			only = { "source.fixAll.eslint" },
+	-- 			diagnostics = {},
+	-- 		},
+	-- 	})
+	-- end, desc = "ESLint: Fix All" },
+	--
 	-- Restart the ESLint language server (works if named 'eslint')
 	{ "<leader>sr", function()
 		vim.cmd('LspRestart eslint')
