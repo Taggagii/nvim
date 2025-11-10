@@ -2,7 +2,7 @@
 local wk = require('which-key')
 
 wk.add({
-	-- FzfLua group
+	-- Find
 	{ '<leader>f', group = 'FzfLua' },
 	{ '<leader>ff', function() vim.cmd('FzfLua files') end, desc = 'Search Files' },
 	{ '<leader>fg', function() vim.cmd('FzfLua live_grep') end, desc = 'Grep Files' },
@@ -13,6 +13,10 @@ wk.add({
 	{ '<leader>fk', function() vim.cmd('FzfLua keymaps') end, desc = 'Search Keymaps' },
 	{ '<leader>fa', function() vim.cmd('FzfLua builtin') end, desc = 'FzfLua Builtins' },
 
-	-- Oil file explorer (no group)
+	-- Oil
 	{ '<leader>e', function() vim.cmd('Oil') end, desc = 'Open File System' },
+
+	-- Style
+	{ '<leader>s', group='Style' },
+	{ '<leader>sf', function() vim.cmd('LspEslintFixAll') end, desc = 'Eslint Fix All' }
 })
