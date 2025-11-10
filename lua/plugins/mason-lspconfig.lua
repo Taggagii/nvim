@@ -5,4 +5,12 @@ return {
         { "mason-org/mason.nvim", opts = {} },
         "neovim/nvim-lspconfig",
     },
+	config = function() 
+		local config = require('mason-lspconfig')
+		config.setup {
+			ensure_installed = { 'ts_ls' }
+		}
+
+	end
+	
 }
