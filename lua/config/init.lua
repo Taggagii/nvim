@@ -5,7 +5,7 @@ vim.g.editorconfig = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- vim.opt.signcolumn = 'number'
+vim.opt.signcolumn = 'number'
 
 vim.opt.clipboard:append('unnamedplus')
 
