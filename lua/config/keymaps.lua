@@ -3,6 +3,9 @@
 local fzf = require('fzf-lua')
 local wk = require('which-key')
 
+-- control backspace
+vim.keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true });
+
 wk.add({
     -- Find
     { '<leader>f', group = 'FzfLua' },
