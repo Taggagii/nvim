@@ -37,4 +37,7 @@ wk.add({
 
 	-- LSP 
 	{ "gD", vim.lsp.buf.definition, desc="Go to Global Definition"},
+
+	-- Hide highlighting
+	{ "<leader>hc", "<CMD>noh<CR>", desc="Clear highlights" },
 })
