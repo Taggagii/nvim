@@ -5,7 +5,7 @@ vim.g.editorconfig = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.signcolumn = 'number'
+vim.opt.signcolumn = 'yes'
 
 vim.opt.clipboard:append('unnamedplus')
 
@@ -15,4 +15,8 @@ vim.opt.tabstop = indentAmount
 vim.opt.shiftwidth = indentAmount
 vim.opt.softtabstop = indentAmount
 vim.opt.expandtab = false
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.wrap = false
 

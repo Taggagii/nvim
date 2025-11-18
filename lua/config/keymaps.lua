@@ -32,12 +32,18 @@ wk.add({
 	-- Resizing splits
 	{ "+", ":resize +2<CR>", desc = "Increase split height" },
 	{ "_", ":resize -2<CR>", desc = "Decrease split height" },
-	{ ">", ":vertical resize +2<CR>", desc = "Increase split width" },
-	{ "<", ":vertical resize -2<CR>", desc = "Decrease split width" },
+	{ "=", ":vertical resize +2<CR>", desc = "Increase split width" },
+	{ "-", ":vertical resize -2<CR>", desc = "Decrease split width" },
 
 	-- LSP 
 	{ "gD", vim.lsp.buf.definition, desc="Go to Global Definition"},
 
 	-- Hide highlighting
+	{ "<leader>h", group="Highlighting" },
 	{ "<leader>hc", "<CMD>noh<CR>", desc="Clear highlights" },
+
+	-- Word Wrap
+	{ "<leader>w", group="Word wrap" },
+	{ "<leader>wy", "<CMD>set wrap<CR>", desc="Turn on Word Wrap" },
+	{ "<leader>wn", "<CMD>set nowrap<CR>", desc="Turn off Word Wrap" },
 })
