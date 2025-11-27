@@ -56,4 +56,7 @@ wk.add({
 	{ "<leader>d", group="Debugging" },
 	{ "<leader>db", "<CMD>DapToggleBreakpoint<CR>", desc="Toggle Breakpoint" },
 	{ "<leader>dr", "<CMD>DapContinue<CR>", desc="Run or Continue the Debugger" },
+	{ "<leader>di", "<CMD>DapStepInto<CR>", desc="Step Into" },
+	{ "<leader>dO", "<CMD>DapStepOut<CR>", desc="Step Out" },
+	{ "<leader>do", "<CMD>DapStepOver<CR>", desc="Step Over" },
 })
