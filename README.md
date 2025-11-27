@@ -10,9 +10,6 @@ Mac:
 ```
 
 Windows:
-```powershell
-    choco install nerd-fonts-iosevka -y
-```
-
+<!-- choco install nerd-fonts-iosevka -y -->
 Windows: <https://github.com/tonsky/FiraCode/wiki/Installing>
 
