@@ -26,8 +26,8 @@ wk.add({
     { '<leader>sf', function() vim.cmd('LspEslintFixAll') end, desc="Eslint Fix All" },
 
     -- Trouble
-    { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics", },
-    { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics", },
+    { "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics", },
+    { "<leader>xX", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics", },
 
 	-- Resizing splits
 	{ "+", ":resize +2<CR>", desc = "Increase split height" },
@@ -46,4 +46,8 @@ wk.add({
 	{ "<leader>w", group="Word wrap" },
 	{ "<leader>wy", "<CMD>set wrap<CR>", desc="Turn on Word Wrap" },
 	{ "<leader>wn", "<CMD>set nowrap<CR>", desc="Turn off Word Wrap" },
+
+	-- Markdown Viewing
+	{ "<leader>m", group="Markdown" },
+	{ "<leader>mp", "<CMD>MarkdownPreviewToggle<CR>", desc="Toggle Markdown Preview" },
 })
