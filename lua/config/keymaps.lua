@@ -26,6 +26,7 @@ wk.add({
     { '<leader>sf', function() vim.cmd('LspEslintFixAll') end, desc="Eslint Fix All" },
 
     -- Trouble
+    { "<leader>x", group="Diagnostics" },
     { "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics", },
     { "<leader>xX", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics", },
 
@@ -50,4 +51,9 @@ wk.add({
 	-- Markdown Viewing
 	{ "<leader>m", group="Markdown" },
 	{ "<leader>mp", "<CMD>MarkdownPreviewToggle<CR>", desc="Toggle Markdown Preview" },
+
+	-- Debugging 
+	{ "<leader>d", group="Debugging" },
+	{ "<leader>db", "<CMD>DapToggleBreakpoint<CR>", desc="Toggle Breakpoint" },
+	{ "<leader>dr", "<CMD>DapContinue<CR>", desc="Run or Continue the Debugger" },
 })
