@@ -16,4 +16,3 @@ Windows:
 
 Windows: <https://github.com/tonsky/FiraCode/wiki/Installing>
 
-
