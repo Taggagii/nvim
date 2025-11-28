@@ -8,7 +8,7 @@ vim.keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true });
 
 wk.add({
     -- Find
-    { '<leader>f', group = 'FzfLua' },
+    { '<leader>f', group = 'Find' },
     { '<leader>ff', function() fzf.files() end, desc = 'Search Files' },
     { '<leader>fg', function() fzf.live_grep() end, desc = 'Grep Files' },
     { '<leader>fb', function() fzf.buffers() end, desc = 'Search Buffers' },
@@ -17,6 +17,7 @@ wk.add({
     { '<leader>fc', function() fzf.commands() end, desc = 'Search Commands' },
     { '<leader>fk', function() fzf.keymaps() end, desc = 'Search Keymaps' },
     { '<leader>fa', function() fzf.builtin() end, desc = 'FzfLua Builtins' },
+    { '<leader>fs', "<CMD>AutoSession search<CR>", desc = 'Search Session' },
 
     -- Oil
     { '<leader>e', function() vim.cmd('Oil') end, desc = 'Open File System' },
@@ -24,6 +25,7 @@ wk.add({
     -- Style
     { '<leader>s', group='Style' },
     { '<leader>sf', function() vim.cmd('LspEslintFixAll') end, desc="Eslint Fix All" },
+    { '<leader>sa', function() vim.lsp.buf.code_action() end, desc="Code Action" },
 
     -- Trouble
     { "<leader>x", group="Diagnostics" },
@@ -39,18 +41,24 @@ wk.add({
 	-- LSP 
 	{ "gD", vim.lsp.buf.definition, desc="Go to Global Definition"},
 
-	-- Hide highlighting
-	{ "<leader>h", group="Highlighting" },
-	{ "<leader>hc", "<CMD>noh<CR>", desc="Clear highlights" },
-
-	-- Word Wrap
-	{ "<leader>w", group="Word wrap" },
-	{ "<leader>wy", "<CMD>set wrap<CR>", desc="Turn on Word Wrap" },
-	{ "<leader>wn", "<CMD>set nowrap<CR>", desc="Turn off Word Wrap" },
-
-	-- Markdown Viewing
-	{ "<leader>m", group="Markdown" },
-	{ "<leader>mp", "<CMD>MarkdownPreviewToggle<CR>", desc="Toggle Markdown Preview" },
+	-- Misc
+	{ "<leader>m", group="Misc" },
+		-- Markdown Viewing
+	{ "<leader>mm", group="Markdown" },
+	{ "<leader>mmp", "<CMD>MarkdownPreviewToggle<CR>", desc="Toggle Markdown Preview" },
+		-- Highlighting
+	{ "<leader>mh", group="Highlighting" },
+	{ "<leader>mhc", "<CMD>noh<CR>", desc="Clear highlights" },
+		-- Word Wrap
+	{ "<leader>mw", group="Word wrap" },
+	{ "<leader>mwy", "<CMD>set wrap<CR>", desc="Turn on Word Wrap" },
+	{ "<leader>mwn", "<CMD>set nowrap<CR>", desc="Turn off Word Wrap" },
+		-- Open
+	{ "<leader>mo", group="Open" },
+	{ "<leader>mof", group="File" },
+	{ "<leader>mofc", function() vim.cmd('!code ' .. vim.fn.expand('%:p')) end, desc="Open File in VSCode" },
+	{ "<leader>moF", group="Folder" },
+	{ "<leader>moFc", function() vim.cmd('!code ' .. vim.fn.expand('%:p:h')) end, desc="Open Folder in VSCode" },
 
 	-- Debugging 
 	{ "<leader>d", group="Debugging" },
