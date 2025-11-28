@@ -56,15 +56,19 @@ wk.add({
 		-- Open
 	{ "<leader>mo", group="Open" },
 	{ "<leader>mof", group="File" },
-	{ "<leader>mofc", function() vim.cmd('!code ' .. vim.fn.expand('%:p')) end, desc="Open File in VSCode" },
+	{ "<leader>mofc", function() 
+		local cwd = vim.fn.getcwd()
+		local current_file = vim.fn.expand('%:p')
+		vim.cmd('!code ' .. cwd .. ' ' .. current_file)
+	end, desc="Open File in VSCode (project root)" },
 	{ "<leader>moF", group="Folder" },
-	{ "<leader>moFc", function() vim.cmd('!code ' .. vim.fn.expand('%:p:h')) end, desc="Open Folder in VSCode" },
+	{ "<leader>moFc", function() 
+		local cwd = vim.fn.getcwd()
+		vim.cmd('!code ' .. cwd)
+	end, desc="Open Project Folder in VSCode" },
 
 	-- Debugging 
 	{ "<leader>d", group="Debugging" },
 	{ "<leader>db", "<CMD>DapToggleBreakpoint<CR>", desc="Toggle Breakpoint" },
-	{ "<leader>dr", "<CMD>DapContinue<CR>", desc="Run or Continue the Debugger" },
-	{ "<leader>di", "<CMD>DapStepInto<CR>", desc="Step Into" },
-	{ "<leader>dO", "<CMD>DapStepOut<CR>", desc="Step Out" },
-	{ "<leader>do", "<CMD>DapStepOver<CR>", desc="Step Over" },
+	{ "<leader>dr", "<CMD>DapContinue<CR>", desc="Run/Continue (then use r/i/O/o/b)" },
 })
