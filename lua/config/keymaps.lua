@@ -27,7 +27,7 @@ wk.add({
     { '<leader>sf', function() vim.cmd('LspEslintFixAll') end, desc="Eslint Fix All" },
     { '<leader>sa', function() vim.lsp.buf.code_action() end, desc="Code Action" },
 
-    -- Trouble
+    -- Diagnostics
     { "<leader>x", group="Diagnostics" },
     { "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics", },
     { "<leader>xX", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics", },
@@ -43,29 +43,25 @@ wk.add({
 
 	-- Misc
 	{ "<leader>m", group="Misc" },
-		-- Markdown Viewing
+		-- Markdown Viewing [m]
 	{ "<leader>mm", group="Markdown" },
 	{ "<leader>mmp", "<CMD>MarkdownPreviewToggle<CR>", desc="Toggle Markdown Preview" },
-		-- Highlighting
+		-- Highlighting [h]
 	{ "<leader>mh", group="Highlighting" },
 	{ "<leader>mhc", "<CMD>noh<CR>", desc="Clear highlights" },
-		-- Word Wrap
+		-- Word Wrap [w]
 	{ "<leader>mw", group="Word wrap" },
 	{ "<leader>mwy", "<CMD>set wrap<CR>", desc="Turn on Word Wrap" },
 	{ "<leader>mwn", "<CMD>set nowrap<CR>", desc="Turn off Word Wrap" },
-		-- Open
+		-- Open [o]
 	{ "<leader>mo", group="Open" },
 	{ "<leader>mof", group="File" },
-	{ "<leader>mofc", function() 
-		local cwd = vim.fn.getcwd()
-		local current_file = vim.fn.expand('%:p')
-		vim.cmd('!code ' .. cwd .. ' ' .. current_file)
-	end, desc="Open File in VSCode (project root)" },
+	{ "<leader>mofc", function() vim.cmd('!code ' .. vim.fn.getcwd() .. ' ' .. vim.fn.expand('%:p')) end, desc="Open File in VSCode (project root)" },
 	{ "<leader>moF", group="Folder" },
-	{ "<leader>moFc", function() 
-		local cwd = vim.fn.getcwd()
-		vim.cmd('!code ' .. cwd)
-	end, desc="Open Project Folder in VSCode" },
+	{ "<leader>moFc", function() vim.cmd('!code ' .. vim.fn.getcwd()) end, desc="Open Project Folder in VSCode" },
+		-- Session Management [s]
+	{ "<leader>ms", group="Session Management" },
+	{ "<leader>mss", "<CMD>AutoSession save<CR>", desc = "Save Current Session" },
 
 	-- Debugging 
 	{ "<leader>d", group="Debugging" },
