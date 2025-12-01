@@ -55,13 +55,20 @@ wk.add({
 	{ "<leader>mwn", "<CMD>set nowrap<CR>", desc="Turn off Word Wrap" },
 		-- Open [o]
 	{ "<leader>mo", group="Open" },
+			-- File [f]
 	{ "<leader>mof", group="File" },
 	{ "<leader>mofc", function() vim.cmd('!code ' .. vim.fn.getcwd() .. ' ' .. vim.fn.expand('%:p')) end, desc="Open File in VSCode (project root)" },
+			-- Folder [F]
 	{ "<leader>moF", group="Folder" },
 	{ "<leader>moFc", function() vim.cmd('!code ' .. vim.fn.getcwd()) end, desc="Open Project Folder in VSCode" },
+			-- LazyGit [l]
+	{ "<leader>mol", "<CMD>term lazygit<CR>", desc="Open Project Folder in VSCode" },
+
+
 		-- Session Management [s]
 	{ "<leader>ms", group="Session Management" },
 	{ "<leader>mss", "<CMD>AutoSession save<CR>", desc = "Save Current Session" },
+
 
 	-- Debugging 
 	{ "<leader>d", group="Debugging" },
