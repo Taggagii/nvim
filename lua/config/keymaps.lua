@@ -66,7 +66,14 @@ wk.add({
 		-- Session Management [s]
 	{ "<leader>ms", group="Session Management" },
 	{ "<leader>mss", "<CMD>AutoSession save<CR>", desc = "Save Current Session" },
-
+	{ "<leader>msS", function()
+		local session_name = vim.fn.input('Enter session name: ')
+		if session_name and #session_name > 0 then
+			vim.cmd("AutoSession save " .. session_name)
+		else
+			print('Session name cannot be empty!')
+		end
+	end, desc = "Save Session with Custom Name" },
 
 	-- Debugging 
 	{ "<leader>d", group="Debugging" },
