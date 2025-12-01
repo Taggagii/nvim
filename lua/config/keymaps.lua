@@ -63,8 +63,6 @@ wk.add({
 	{ "<leader>moFc", function() vim.cmd('!code ' .. vim.fn.getcwd()) end, desc="Open Project Folder in VSCode" },
 			-- LazyGit [l]
 	{ "<leader>mol", "<CMD>term lazygit<CR>", desc="Open Project Folder in VSCode" },
-
-
 		-- Session Management [s]
 	{ "<leader>ms", group="Session Management" },
 	{ "<leader>mss", "<CMD>AutoSession save<CR>", desc = "Save Current Session" },

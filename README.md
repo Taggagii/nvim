@@ -2,12 +2,14 @@
     - neovim
     - zig
     - ripgrep
+    - fzf
 
 ### Font Used: FiraCode
-Mac:
-```shell
-    brew install nerd-fonts-iosevka
-```
+<!-- todo: Please add some documentation for firacode for mac ->
+<!-- Mac: -->
+<!-- ```shell -->
+<!--     brew install nerd-fonts-iosevka -->
+<!-- ``` -->
 
 Windows:
 <!-- choco install nerd-fonts-iosevka -y -->
