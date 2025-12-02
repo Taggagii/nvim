@@ -63,6 +63,28 @@ wk.add({
 	{ "<leader>moFc", function() vim.cmd('!code ' .. vim.fn.getcwd()) end, desc="Open Project Folder in VSCode" },
 			-- LazyGit [l]
 	{ "<leader>mol", "<CMD>term lazygit<CR>", desc="Open Project Folder in VSCode" },
+			-- CoPilot [c]
+	{ "<leader>moc", function() 
+		local url = "https://github.com/copilot"
+		local system_information = vim.uv.os_uname()
+		local system_name = system_information.sysname
+		local release = system_information.release
+
+		if system_name == "Linux" then
+			if release:find("microsoft") and release:find("WSL") then
+				vim.system({"wslview", url})
+			else
+				vim.system({"xdg-open", url})
+			end
+		elseif system_name == "Windows_NT" then
+			vim.system({"start", url})
+		elseif system_name == "Darwin" then
+			vim.system({"open", url})
+		else
+			print("I don't know the open command for " .. system_name)
+		end
+	end, desc="Launch Github CoPilot"},
+
 		-- Session Management [s]
 	{ "<leader>ms", group="Session Management" },
 	{ "<leader>mss", "<CMD>AutoSession save<CR>", desc = "Save Current Session" },
