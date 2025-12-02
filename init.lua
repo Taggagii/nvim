@@ -22,7 +22,8 @@ vim.api.nvim_create_autocmd("FileType", {
 require("lazy").setup("plugins")
 require("config")
 
-vim.cmd("colorscheme vscode")
+vim.cmd("colorscheme wildcharm")
+-- vim.cmd("colorscheme vscode")
 -- vim.cmd("colorscheme kanagawa-dragon")
 -- vim.cmd("colorscheme kanagawa-wave")
 -- vim.cmd("colorscheme kanagawa-lotus")
