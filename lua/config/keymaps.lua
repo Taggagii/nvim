@@ -77,7 +77,7 @@ wk.add({
 				vim.system({"xdg-open", url})
 			end
 		elseif system_name == "Windows_NT" then
-			vim.system({"start", url})
+			vim.system({"cmd", "/c", "start", url})
 		elseif system_name == "Darwin" then
 			vim.system({"open", url})
 		else
