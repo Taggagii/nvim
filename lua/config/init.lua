@@ -12,11 +12,13 @@ vim.opt.signcolumn = 'yes'
 vim.opt.clipboard:append('unnamedplus')
 
 -- for matting
-local indentAmount = 4
-vim.opt.tabstop = indentAmount
-vim.opt.shiftwidth = indentAmount
-vim.opt.softtabstop = indentAmount
-vim.opt.expandtab = false
+-- local indentAmount = 4
+vim.opt.tabstop = 4
+-- vim.opt.shiftwidth = indentAmount
+-- vim.opt.softtabstop = indentAmount
+-- vim.opt.expandtab = false
+
+-- for wrapping
 vim.opt.wrap = false
 
 -- for searching
