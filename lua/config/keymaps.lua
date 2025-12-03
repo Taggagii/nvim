@@ -39,7 +39,7 @@ wk.add({
 	{ "-", ":vertical resize -2<CR>", desc = "Decrease split width" },
 
 	-- LSP 
-	{ "gD", vim.lsp.buf.definition, desc="Go to Global Definition"},
+	{ "gD", function() fzf.lsp_definitions({ jump1 = true }) end, desc="Go to Definition"},
 
 	-- Misc
 	{ "<leader>m", group="Misc" },
