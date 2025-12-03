@@ -2,6 +2,7 @@
 
 local fzf = require('fzf-lua')
 local wk = require('which-key')
+local browser = require('helpers.browser')
 
 -- control backspace
 vim.keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true });
@@ -64,26 +65,7 @@ wk.add({
 			-- LazyGit [l]
 	{ "<leader>mol", "<CMD>term lazygit<CR>", desc="Open current project in lazygit" },
 			-- CoPilot [c]
-	{ "<leader>moc", function() 
-		local url = "https://github.com/copilot"
-		local system_information = vim.uv.os_uname()
-		local system_name = system_information.sysname
-		local release = system_information.release
-
-		if system_name == "Linux" then
-			if release:find("microsoft") and release:find("WSL") then
-				vim.system({"wslview", url})
-			else
-				vim.system({"xdg-open", url})
-			end
-		elseif system_name == "Windows_NT" then
-			vim.system({"cmd", "/c", "start", url})
-		elseif system_name == "Darwin" then
-			vim.system({"open", url})
-		else
-			print("I don't know the open command for " .. system_name)
-		end
-	end, desc="Launch Github CoPilot"},
+	{ "<leader>moc", function() browser.open_url("https://github.com/copilot") end, desc="Launch Github CoPilot"},
 
 		-- Session Management [s]
 	{ "<leader>ms", group="Session Management" },
