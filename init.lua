@@ -19,6 +19,11 @@ vim.api.nvim_create_autocmd("FileType", {
 	command = "setlocal formatoptions-=o formatoptions-=r",
 });
 
+-- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+-- 	pattern = "*.tex",
+-- 	command = "set filetype=tex"
+-- })
+
 require("lazy").setup("plugins")
 require("config")
 
@@ -28,3 +33,4 @@ vim.cmd("colorscheme midnight") -- dark but a bit less agressive
 -- vim.cmd("colorscheme kanagawa-dragon")
 -- vim.cmd("colorscheme kanagawa-wave")
 -- vim.cmd("colorscheme catppuccin")
+
