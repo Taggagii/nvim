@@ -70,6 +70,9 @@ wk.add({
 	{ "<leader>moc",  function() browser.open_url("https://github.com/copilot") end,                      desc = "Launch Github CoPilot" },
 	-- Quickfix [q]
 	{ "<leader>moq",  function() vim.cmd("copen") end,                                                    desc = "Launch Github CoPilot" },
+	-- NoNeckPain [n]
+	{ "<leader>mnt", group = "NoNeckPain"},
+	{ "<leader>mnt", function() vim.cmd("NoNeckPain") end, desc = "Toggle NoNeckPain"},
 
 
 	-- Session Management [s]
