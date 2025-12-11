@@ -71,7 +71,7 @@ wk.add({
 	-- Quickfix [q]
 	{ "<leader>moq",  function() vim.cmd("copen") end,                                                    desc = "Launch Github CoPilot" },
 	-- NoNeckPain [n]
-	{ "<leader>mnt", group = "NoNeckPain"},
+	{ "<leader>mn", group = "NoNeckPain"},
 	{ "<leader>mnt", function() vim.cmd("NoNeckPain") end, desc = "Toggle NoNeckPain"},
 
 
