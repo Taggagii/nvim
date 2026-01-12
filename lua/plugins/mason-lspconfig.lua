@@ -16,7 +16,7 @@ return {
 	config = function() 
 		local config = require('mason-lspconfig')
 		config.setup {
-			ensure_installed = { 'ts_ls', 'eslint' }
+			ensure_installed = { }
 		}
 
 	end
