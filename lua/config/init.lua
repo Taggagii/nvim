@@ -19,7 +19,7 @@ vim.opt.softtabstop = indentAmount
 -- vim.opt.expandtab = false
 
 -- for wrapping
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 -- for searching
 vim.opt.ignorecase = true
