@@ -22,6 +22,13 @@ wk.add({
 	{ '<leader>fa',   function() fzf.builtin() end,                                                       desc = 'FzfLua Builtins' },
 	{ '<leader>fs',   "<CMD>AutoSession search<CR>",                                                      desc = 'Search Session' },
 
+	-- Code Companion
+	{ "<leader>c", group = "CodeCompanion" },
+	{ "<leader>cc", "<cmd>CodeCompanionChat<cr>", desc = "CodeCompanion Chat" },
+	{ "<leader>ca", "<cmd>CodeCompanionActions<cr>", desc = "CodeCompanion Actions" },
+	{ "<leader>ce", "<cmd>CodeCompanion Explain<cr>", mode = "v", desc = "Explain Selection" },
+	{ "<leader>cf", "<cmd>CodeCompanion Fix<cr>", mode = "v", desc = "Fix Selection" },
+
 	-- Oil
 	{ '<leader>e',    function() vim.cmd('Oil') end,                                                      desc = 'Open File System' },
 
