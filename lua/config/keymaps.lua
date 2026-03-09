@@ -53,9 +53,12 @@ wk.add({
 
 	-- Misc
 	{ "<leader>m",    group = "Misc" },
-	-- Markdown Viewing [m]
-	{ "<leader>mm",   group = "Markdown" },
-	{ "<leader>mmp",  "<CMD>MarkdownPreviewToggle<CR>",                                                   desc = "Toggle Markdown Preview" },
+
+	-- We're not using this extension anymore
+	-- -- Markdown Viewing [m]
+	-- { "<leader>mm",   group = "Markdown" },
+	-- { "<leader>mmp",  "<CMD>MarkdownPreviewToggle<CR>",                                                   desc = "Toggle Markdown Preview" },
+
 	-- Highlighting [h]
 	{ "<leader>mh",   group = "Highlighting" },
 	{ "<leader>mhc",  "<CMD>noh<CR>",                                                                     desc = "Clear highlights" },
@@ -76,7 +79,7 @@ wk.add({
 	-- CoPilot [c]
 	{ "<leader>moc",  function() browser.open_url("https://github.com/copilot") end,                      desc = "Launch Github CoPilot" },
 	-- Quickfix [q]
-	{ "<leader>moq",  function() vim.cmd("copen") end,                                                    desc = "Launch Github CoPilot" },
+	{ "<leader>moq",  function() vim.cmd("copen") end,                                                    desc = "Open Quickfix Window" },
 	-- NoNeckPain [n]
 	{ "<leader>mn", group = "NoNeckPain"},
 	{ "<leader>mnt", function() vim.cmd("NoNeckPain") end, desc = "Toggle NoNeckPain"},

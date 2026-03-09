@@ -14,7 +14,7 @@ function M.open_url(url)
 	elseif os_type == "linux" then
 		vim.system({"xdg-open", url})
 	elseif os_type == "windows" then
-		vim.system({"cmd", "/c", "start", url})
+		vim.system({"cmd", "/c", "start", "", url})
 	elseif os_type == "macos" then
 		vim.system({"open", url})
 	else
