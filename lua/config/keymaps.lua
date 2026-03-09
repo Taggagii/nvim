@@ -72,7 +72,7 @@ wk.add({
 	{ "<leader>moF",  group = "Folder" },
 	{ "<leader>moFc", function() vim.cmd('!code ' .. vim.fn.getcwd()) end,                                desc = "Open Project Folder in VSCode" },
 	-- LazyGit [l]
-	{ "<leader>mol",  "<CMD>term lazygit<CR>",                                                            desc = "Open current project in lazygit" },
+	{ "<leader>mol",	function() vim.cmd("term lazygit") vim.cmd("startinsert") end,                                                            desc = "Open current project in lazygit" },
 	-- CoPilot [c]
 	{ "<leader>moc",  function() browser.open_url("https://github.com/copilot") end,                      desc = "Launch Github CoPilot" },
 	-- Quickfix [q]
