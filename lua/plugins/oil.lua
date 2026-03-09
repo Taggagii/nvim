@@ -6,6 +6,8 @@ return {
 		win_options = {
 			signcolumn = "auto:2",
 		},
+
+
 	},
 	-- Optional dependencies
 	dependencies = { { "nvim-mini/mini.icons", opts = {} } },

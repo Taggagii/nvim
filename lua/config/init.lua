@@ -35,5 +35,8 @@ vim.opt.foldlevelstart = 99
 -- for session manager
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
+-- for splitting 
+vim.opt.splitright = true
+
 -- for centering (this is actually really annoying)
 -- vim.opt.scrolloff = 999
