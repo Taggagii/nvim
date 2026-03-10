@@ -11,9 +11,9 @@ vim.opt.signcolumn = 'yes'
 
 -- for copying
 vim.opt.clipboard:append('unnamedplus')
-local system = os.detect_os()
 
-if system == "windows" then
+local system = os.detect_os()
+if system == "windows" or system == "wsl" then
   vim.g.clipboard = {
     name = "win32yank",
     copy = {
@@ -26,61 +26,7 @@ if system == "windows" then
     },
     cache_enabled = 0,
   }
-
-elseif system == "linux" then
-  vim.g.clipboard = {
-    name = "wl-clipboard",
-    copy = {
-      ["+"] = "wl-copy",
-      ["*"] = "wl-copy",
-    },
-    paste = {
-      ["+"] = "wl-paste --no-newline",
-      ["*"] = "wl-paste --no-newline",
-    },
-    cache_enabled = 0,
-  }
-
-elseif system == "macos" then
-  vim.g.clipboard = {
-    name = "macsystem-clipboard",
-    copy = {
-      ["+"] = "pbcopy",
-      ["*"] = "pbcopy",
-    },
-    paste = {
-      ["+"] = "pbpaste",
-      ["*"] = "pbpaste",
-    },
-    cache_enabled = 0,
-  }
-
-elseif system == "wsl" then
-  vim.g.clipboard = {
-    name = "win32yank-wsl",
-    copy = {
-      ["+"] = "win32yank.exe -i --crlf",
-      ["*"] = "win32yank.exe -i --crlf",
-    },
-    paste = {
-      ["+"] = "win32yank.exe -o --lf",
-      ["*"] = "win32yank.exe -o --lf",
-    },
-    cache_enabled = 0,
-  }
 end
-vim.g.clipboard = {
-  name = "win32yank",
-  copy = {
-    ["+"] = "win32yank.exe -i --crlf",
-    ["*"] = "win32yank.exe -i --crlf",
-  },
-  paste = {
-    ["+"] = "win32yank.exe -o --lf",
-    ["*"] = "win32yank.exe -o --lf",
-  },
-  cache_enabled = 0,
-}
 
 -- for matting
 local indentAmount = 2
