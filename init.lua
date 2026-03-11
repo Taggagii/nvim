@@ -26,5 +26,6 @@ require("config")
 -- vim.cmd("colorscheme midnight") -- dark but a bit less agressive
 -- vim.cmd("colorscheme vscode")
 -- vim.cmd("colorscheme kanagawa-dragon")
-vim.cmd("colorscheme kanagawa-wave")
+-- vim.cmd("colorscheme kanagawa-wave")
 -- vim.cmd("colorscheme catppuccin")
+vim.cmd("colorscheme jellybeans")
