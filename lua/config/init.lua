@@ -13,7 +13,7 @@ vim.opt.signcolumn = 'yes'
 vim.opt.clipboard:append('unnamedplus')
 
 local system = os.detect_os()
-if system == "windows" or system == "wsl" then
+if system == "windows" then
   vim.g.clipboard = {
     name = "win32yank",
     copy = {
