@@ -10,10 +10,8 @@ vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'
 
 -- for copying
-vim.opt.clipboard:append('unnamedplus')
-
 local system = os.detect_os()
-if system == "windows" then
+if system == "windows" or system == "wsl" then
   vim.g.clipboard = {
     name = "win32yank",
     copy = {
@@ -26,6 +24,7 @@ if system == "windows" then
     },
     cache_enabled = 0,
   }
+	vim.opt.clipboard = "unnamedplus"
 end
 
 -- for matting

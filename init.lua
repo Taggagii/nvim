@@ -1,3 +1,7 @@
+ -- Remember
+ -- if you think your config is slow, try turning off tmux
+
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	vim.fn.system({
@@ -29,5 +33,5 @@ require("config")
 -- vim.cmd("colorscheme kanagawa-wave")
 -- vim.cmd("colorscheme catppuccin")
 -- vim.cmd("colorscheme gruvbox")
--- vim.cmd("colorscheme jellybeans")
-vim.cmd("colorscheme catppuccin-mocha")
+vim.cmd("colorscheme jellybeans")
+-- vim.cmd("colorscheme catppuccin-mocha")
