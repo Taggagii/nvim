@@ -11,31 +11,43 @@ vim.keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true });
 
 wk.add({
 	-- Find
-	{ '<leader>f',    group = 'Find' },
-	{ '<leader>ff',   function() fzf.files() end,                                                         desc = 'Search Files' },
-	{ '<leader>fg',   function() fzf.live_grep() end,                                                     desc = 'Grep Files' },
-	{ '<leader>fb',   function() fzf.buffers() end,                                                       desc = 'Search Buffers' },
-	{ '<leader>fh',   function() fzf.help_tags() end,                                                     desc = 'Search Help Tags' },
-	{ '<leader>fm',   function() fzf.marks() end,                                                         desc = 'Search Marks' },
-	{ '<leader>fc',   function() fzf.commands() end,                                                      desc = 'Search Commands' },
-	{ '<leader>fk',   function() fzf.keymaps() end,                                                       desc = 'Search Keymaps' },
-	{ '<leader>fa',   function() fzf.builtin() end,                                                       desc = 'FzfLua Builtins' },
-	{ '<leader>fs',   "<CMD>AutoSession search<CR>",                                                      desc = 'Search Session' },
+	{ '<leader>f',  group = 'Find' },
+	{ '<leader>ff', function() fzf.files() end,               desc = 'Search Files' },
+	{ '<leader>fg', function() fzf.live_grep() end,           desc = 'Grep Files' },
+	{ '<leader>fb', function() fzf.buffers() end,             desc = 'Search Buffers' },
+	{ '<leader>fh', function() fzf.help_tags() end,           desc = 'Search Help Tags' },
+	{ '<leader>fm', function() fzf.marks() end,               desc = 'Search Marks' },
+	{ '<leader>fc', function() fzf.commands() end,            desc = 'Search Commands' },
+	{ '<leader>fk', function() fzf.keymaps() end,             desc = 'Search Keymaps' },
+	{ '<leader>fa', function() fzf.builtin() end,             desc = 'FzfLua Builtins' },
+	{ '<leader>fs', "<CMD>AutoSession search<CR>",            desc = 'Search Session' },
 
 	-- Code Companion
-	{ "<leader>c", group = "CodeCompanion" },
-	{ "<leader>cc", "<cmd>CodeCompanionChat<cr>", desc = "CodeCompanion Chat" },
-	{ "<leader>ca", "<cmd>CodeCompanionActions<cr>", desc = "CodeCompanion Actions" },
-	{ "<leader>ce", "<cmd>CodeCompanion Explain<cr>", mode = "v", desc = "Explain Selection" },
-	{ "<leader>cf", "<cmd>CodeCompanion Fix<cr>", mode = "v", desc = "Fix Selection" },
+	{ "<leader>c",  group = "CodeCompanion" },
+	{ "<leader>cc", "<cmd>CodeCompanionChat<cr>",             desc = "CodeCompanion Chat" },
+	{ "<leader>ca", "<cmd>CodeCompanionActions<cr>",          desc = "CodeCompanion Actions" },
+	{ "<leader>ce", "<cmd>CodeCompanion Explain<cr>",         mode = "v",                    desc = "Explain Selection" },
+	{ "<leader>cf", "<cmd>CodeCompanion Fix<cr>",             mode = "v",                    desc = "Fix Selection" },
 
 	-- Oil
-	{ '<leader>e',    function() vim.cmd('Oil') end,                                                      desc = 'Open File System' },
+	{ '<leader>e',  function() vim.cmd('Oil') end,            desc = 'Open File System' },
 
 	-- Style
-	{ '<leader>s',    group = 'Style' },
-	{ '<leader>sf',   function() formatting.format_file() end,                                            desc = "Eslint Fix All" },
-	{ '<leader>sa',   function() vim.lsp.buf.code_action() end,                                           desc = "Code Action" },
+	{ '<leader>s',  group = 'Style' },
+	{ '<leader>sf', function() formatting.format_file() end,  desc = "Eslint Fix All" },
+	{ '<leader>sa', function() vim.lsp.buf.code_action() end, desc = "Code Action" },
+	{
+		'<leader>ss',
+		function()
+			vim.wo.spell = not vim.wo.spell
+			if vim.wo.spell then
+				print("Spell check enabled")
+			else
+				print("Spell check disabled")
+			end
+		end,
+		desc = "Toggle Spell Check"
+	},
 
 	-- Diagnostics
 	{ "<leader>x",    group = "Diagnostics" },
@@ -55,9 +67,9 @@ wk.add({
 	{ "<leader>m",    group = "Misc" },
 
 	-- We're not using this extension anymore
-	-- -- Markdown Viewing [m]
-	-- { "<leader>mm",   group = "Markdown" },
-	-- { "<leader>mmp",  "<CMD>MarkdownPreviewToggle<CR>",                                                   desc = "Toggle Markdown Preview" },
+	-- Markdown Viewing [m]
+	{ "<leader>mm",   group = "Markdown" },
+	{ "<leader>mmp",  "<CMD>MarkdownPreviewToggle<CR>",                                                   desc = "Toggle Markdown Preview" },
 
 	-- Highlighting [h]
 	{ "<leader>mh",   group = "Highlighting" },
@@ -75,23 +87,28 @@ wk.add({
 	{ "<leader>moF",  group = "Folder" },
 	{ "<leader>moFc", function() vim.cmd('!code ' .. vim.fn.getcwd()) end,                                desc = "Open Project Folder in VSCode" },
 	-- LazyGit [l]
-	{ "<leader>mol",	function() vim.cmd("term lazygit") vim.cmd("startinsert") end,                                                            desc = "Open current project in lazygit" },
+	{
+		"<leader>mol",
+		function()
+			vim.cmd("term lazygit")
+			vim.cmd("startinsert")
+		end,
+		desc = "Open current project in lazygit"
+	},
 	-- CoPilot [c]
-	{ "<leader>moc",  function() browser.open_url("https://github.com/copilot") end,                      desc = "Launch Github CoPilot" },
+	{ "<leader>moc", function() browser.open_url("https://github.com/copilot") end, desc = "Launch Github CoPilot" },
 	-- Quickfix [q]
-	{ "<leader>moq",  function() vim.cmd("copen") end,                                                    desc = "Open Quickfix Window" },
+	{ "<leader>moq", function() vim.cmd("copen") end,                               desc = "Open Quickfix Window" },
 	-- NoNeckPain [n]
-	{ "<leader>mn", group = "NoNeckPain"},
-	{ "<leader>mnt", function() vim.cmd("NoNeckPain") end, desc = "Toggle NoNeckPain"},
-
-
+	{ "<leader>mn",  group = "NoNeckPain" },
+	{ "<leader>mnt", function() vim.cmd("NoNeckPain") end,                          desc = "Toggle NoNeckPain" },
 	-- Session Management [s]
-	{ "<leader>ms",   group = "Session Management" },
-	{ "<leader>mss",  "<CMD>AutoSession save<CR>",                                                        desc = "Save Current Session" },
-	{ "<leader>msS",  function() autosession.save() end,                                                  desc = "Save Session with Custom Name" },
+	{ "<leader>ms",  group = "Session Management" },
+	{ "<leader>mss", "<CMD>AutoSession save<CR>",                                   desc = "Save Current Session" },
+	{ "<leader>msS", function() autosession.save() end,                             desc = "Save Session with Custom Name" },
 
 	-- Debugging
-	{ "<leader>d",    group = "Debugging" },
-	{ "<leader>db",   "<CMD>DapToggleBreakpoint<CR>",                                                     desc = "Toggle Breakpoint" },
-	{ "<leader>dr",   "<CMD>DapContinue<CR>",                                                             desc = "Run/Continue (then use r/i/O/o/b)" },
+	{ "<leader>d",   group = "Debugging" },
+	{ "<leader>db",  "<CMD>DapToggleBreakpoint<CR>",                                desc = "Toggle Breakpoint" },
+	{ "<leader>dr",  "<CMD>DapContinue<CR>",                                        desc = "Run/Continue (then use r/i/O/o/b)" },
 })

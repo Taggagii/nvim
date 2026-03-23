@@ -54,5 +54,9 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 -- for splitting 
 vim.opt.splitright = true
 
+-- for spelling
+vim.opt.spell = false -- we'll set this with a keybind
+vim.opt.spelllang = { "en_ca" }
+
 -- for centering (this is actually really annoying)
 -- vim.opt.scrolloff = 999
