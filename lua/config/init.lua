@@ -60,3 +60,5 @@ vim.opt.spelllang = { "en_ca" }
 
 -- for centering (this is actually really annoying)
 -- vim.opt.scrolloff = 999
+-- for obsidian
+vim.opt.conceallevel = 2
