@@ -22,7 +22,7 @@ return {
 		workspaces = {
 			{
 				name = "Vault",
-				path = "~/obsidian-vault"
+				path = "~/obsidian"
 			}
 		}
 	}
