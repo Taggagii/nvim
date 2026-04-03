@@ -115,24 +115,33 @@ wk.add({
 	-- Obsidian keymaps with proper groups
 	{ "<leader>o",   group = "Obsidian" },
 	{ "<leader>of",  function() vim.cmd("ObsidianSearch") end,                      desc = "Open Obsidian search" },
-	{ "<leader>ow",  function() vim.cmd("ObsidianWorkspace") end,                      desc = "Open Workspace" },
+	{ "<leader>ow",  function() vim.cmd("ObsidianWorkspace") end,                   desc = "Open Workspace" },
 	{ "<leader>oc",  group = "Checkbox" },
 
 	-- todo : add more here (set to complete with one key)
-	{ "<leader>occ", function() vim.cmd("ObsidianToggleCheckbox") end,              desc = "Cycle Checkbox Option" },
+	{ "<leader>occ", "mz0f]hrx`z<CMD>:delmarks z<CR>",              desc = "Toggle Checkbox" },
 	-- { "<leader>or", function() vim.cmd("ObsidianQuickSwitch") end, desc = "Quick switch notes" },
 	-- { "<leader>op",  ":ObsidianPasteImg",                                           desc = "Paste Image" }, -- warning: this doesn't work correctly
 	{ "<leader>ob",  function() vim.cmd("ObsidianBacklinks") end,                   desc = "Show backlinks for current note" },
+	{ 
+		"<leader>os", 
+		function()
+			local cmd = "cd $HOME/obsidian && git add . && git commit -m 'adding notes' && git push"
+			local result = vim.fn.system(cmd)
+			print(result)  -- optional: prints the git output in a popup-style line
+		end, 
+		desc = "Git add, commit, and push current Obsidian vault" 
+	},
 	{ "<leader>ol",  group = "Link" },
-	{ "<leader>oll", ":ObsidianLink ",                                              mode = "v",                                 desc = "Link selected text (manual input)" },
-	{ "<leader>ole", ":ObsidianExtractNote ",                                       mode = "v",                                 desc = "Extract selected text to new note (manual input)" },
-	{ "<leader>oln", ":ObsidianLinkNew ",                                           mode = "v",                                 desc = "Create new link from selection (manual input)" },
-	{ "<leader>olf", function() vim.cmd("ObsidianLinks") end,                       desc = "Open link picker" },
-	{ "<leader>on",  function() vim.cmd("ObsidianNew") end,                         desc = "Create new note (prompt for title)" },
+	{ "<leader>oll", ":ObsidianLink ",                              mode = "v",                                 desc = "Link selected text (manual input)" },
+	{ "<leader>ole", ":ObsidianExtractNote ",                       mode = "v",                                 desc = "Extract selected text to new note (manual input)" },
+	{ "<leader>oln", ":ObsidianLinkNew ",                           mode = "v",                                 desc = "Create new link from selection (manual input)" },
+	{ "<leader>olf", function() vim.cmd("ObsidianLinks") end,       desc = "Open link picker" },
+	{ "<leader>on",  function() vim.cmd("ObsidianNew") end,         desc = "Create new note (prompt for title)" },
 	{ "<leader>od",  group = "Dailies" },
-	{ "<leader>odd", function() vim.cmd("ObsidianToday") end,                       desc = "Open today's daily note" },
-	{ "<leader>ody", function() vim.cmd("ObsidianYesterday") end,                   desc = "Open yesterday's daily note" },
-	{ "<leader>odt", function() vim.cmd("ObsidianTomorrow") end,                    desc = "Open tomorrow's daily note" },
-	{ "<leader>oq",  function() vim.cmd("ObsidianQuickSwitch") end,                 desc = "Quick switch notes" },
+	{ "<leader>odd", function() vim.cmd("ObsidianToday") end,       desc = "Open today's daily note" },
+	{ "<leader>ody", function() vim.cmd("ObsidianYesterday") end,   desc = "Open yesterday's daily note" },
+	{ "<leader>odt", function() vim.cmd("ObsidianTomorrow") end,    desc = "Open tomorrow's daily note" },
+	{ "<leader>oq",  function() vim.cmd("ObsidianQuickSwitch") end, desc = "Quick switch notes" },
 
 })
