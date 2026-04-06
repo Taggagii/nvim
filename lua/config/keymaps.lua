@@ -36,8 +36,10 @@ wk.add({
 	{ '<leader>s',  group = 'Style' },
 	{ '<leader>sf', function() formatting.format_file() end,  desc = "Eslint Fix All" },
 	{ '<leader>sa', function() vim.lsp.buf.code_action() end, desc = "Code Action" },
+	
+	{ '<leader>ss',  group = 'Spell Check' },
 	{
-		'<leader>ss',
+		'<leader>sst',
 		function()
 			vim.wo.spell = not vim.wo.spell
 			if vim.wo.spell then
@@ -48,8 +50,12 @@ wk.add({
 		end,
 		desc = "Toggle Spell Check"
 	},
+	{ '<leader>ssn', ']s', desc = "Next misspelled word" },
+	{ '<leader>ssp', '[s', desc = "Previous misspelled word" },
+	{ '<leader>sss', 'z=', desc = "Spelling suggestions" },
+	{ '<leader>ssa', 'zg', desc = "Add word to dictionary" },
+	{ '<leader>ssw', 'zw', desc = "Mark word as wrong" },
 
-	-- Diagnostics
 	{ "<leader>x",    group = "Diagnostics" },
 	{ "<leader>xx",   "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",                                 desc = "Buffer Diagnostics", },
 	{ "<leader>xX",   "<cmd>Trouble diagnostics toggle<cr>",                                              desc = "Diagnostics", },
@@ -117,9 +123,10 @@ wk.add({
 	{ "<leader>of",  function() vim.cmd("ObsidianSearch") end,                      desc = "Open Obsidian search" },
 	{ "<leader>ow",  function() vim.cmd("ObsidianWorkspace") end,                   desc = "Open Workspace" },
 	{ "<leader>oc",  group = "Checkbox" },
-
+	{ "<leader>or", ":ObsidianRename ",                              mode = "n",                                 desc = "Rename current file" },
 	-- todo : add more here (set to complete with one key)
-	{ "<leader>occ", "mz0f]hrx`z<CMD>:delmarks z<CR>",              desc = "Toggle Checkbox" },
+	{ "<leader>ocy", "mz0f]hrx`z<CMD>:delmarks z<CR>",              desc = "Toggle Checkbox Done" },
+	{ "<leader>ocn", "mz0f]hr `z<CMD>:delmarks z<CR>",              desc = "Toggle Checkbox Not Done" },
 	-- { "<leader>or", function() vim.cmd("ObsidianQuickSwitch") end, desc = "Quick switch notes" },
 	-- { "<leader>op",  ":ObsidianPasteImg",                                           desc = "Paste Image" }, -- warning: this doesn't work correctly
 	{ "<leader>ob",  function() vim.cmd("ObsidianBacklinks") end,                   desc = "Show backlinks for current note" },
