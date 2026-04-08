@@ -30,7 +30,7 @@ return {
       },
 
       mapping = cmp.mapping.preset.insert({
-        ["<CR>"] = cmp.mapping.confirm({ select = false }), -- enter to confirm 
+        ["<Tab>"] = cmp.mapping.confirm({ select = false }), -- enter to confirm 
         ["<C-Space>"] = cmp.mapping.complete(),             -- open completion
         ["<C-e>"] = cmp.mapping.abort(),                    -- close completion
 
