@@ -32,6 +32,9 @@ wk.add({
 	-- Oil
 	{ '<leader>e',  function() vim.cmd('Oil') end,            desc = 'Open File System' },
 
+	-- Select all
+	{ '<leader>a', "ggVG", desc = "Select all lines" },
+
 	-- Style
 	{ '<leader>s',  group = 'Style' },
 	{ '<leader>sf', function() formatting.format_file() end,  desc = "Eslint Fix All" },
