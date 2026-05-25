@@ -22,8 +22,8 @@ return {
 		workspaces = {
 			{
 				name = "Vault",
-				path = "~/obsidian"
-			}
+				path = "~/obsidian/lumi-labs"
+			},
 		}
 	}
 }
