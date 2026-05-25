@@ -24,8 +24,8 @@ if system == "windows" or system == "wsl" then
     },
     cache_enabled = 0,
   }
-	vim.opt.clipboard = "unnamedplus"
 end
+vim.opt.clipboard = "unnamedplus"
 
 -- for matting
 local indentAmount = 2
