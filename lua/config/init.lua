@@ -1,4 +1,5 @@
 require("config.keymaps")
+require("config.autocmds")
 local os = require("helpers.os")
 
 -- for config to not do silly things
