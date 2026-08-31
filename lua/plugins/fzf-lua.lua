@@ -6,6 +6,6 @@ return {
 	-- dependencies = { "nvim-mini/mini.icons" },
 	opts = {},
 	config = function()
-		require('fzf-lua').setup({'telescope'})
+		require('fzf-lua').setup({ 'telescope' })
 	end
 }
