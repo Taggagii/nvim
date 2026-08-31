@@ -9,12 +9,21 @@ local autosession = require('helpers.autosession')
 -- control backspace
 vim.keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true });
 
+-- Sidekick: jump to / apply Copilot Next Edit Suggestion, falling back to a normal <Tab>
+vim.keymap.set({ "n", "i" }, "<Tab>", function()
+	if not require("sidekick").nes_jump_or_apply() then
+		return "<Tab>"
+	end
+end, { expr = true, desc = "Goto/Apply Next Edit Suggestion" })
+
 wk.add({
 	-- Find
 	{ '<leader>f',  group = 'Find' },
 	{ '<leader>ff', function() fzf.files() end,               desc = 'Search Files' },
 	{ '<leader>fF', function() fzf.files({ hidden = true, no_ignore = true }) end, desc = 'Search Files (include hidden)' },
 	{ '<leader>fg', function() fzf.live_grep() end,           desc = 'Grep Files' },
+	{ '<leader>fg', function() fzf.grep_visual() end,         mode = 'x', desc = 'Grep Selected Text' },
+	{ '<leader>fG', function() fzf.live_grep({ hidden = true, no_ignore = true }) end, desc = 'Grep Files (include hidden)' },
 	{ '<leader>fb', function() fzf.buffers() end,             desc = 'Search Buffers' },
 	{ '<leader>fh', function() fzf.help_tags() end,           desc = 'Search Help Tags' },
 	{ '<leader>fm', function() fzf.marks() end,               desc = 'Search Marks' },
@@ -23,18 +32,22 @@ wk.add({
 	{ '<leader>fa', function() fzf.builtin() end,             desc = 'FzfLua Builtins' },
 	{ '<leader>fs', "<CMD>AutoSession search<CR>",            desc = 'Search Session' },
 
-	-- Code Companion
-	{ "<leader>c",  group = "CodeCompanion" },
-	{ "<leader>cc", "<cmd>CodeCompanionChat<cr>",             desc = "CodeCompanion Chat" },
-	{ "<leader>ca", "<cmd>CodeCompanionActions<cr>",          desc = "CodeCompanion Actions" },
-	{ "<leader>ce", "<cmd>CodeCompanion Explain<cr>",         mode = "v",                    desc = "Explain Selection" },
-	{ "<leader>cf", "<cmd>CodeCompanion Fix<cr>",             mode = "v",                    desc = "Fix Selection" },
-
 	-- Oil
 	{ '<leader>e',  function() vim.cmd('Oil') end,            desc = 'Open File System' },
 
+	-- Sidekick (AI CLI + Next Edit Suggestions)
+	{ "<leader>a",  group = "Sidekick AI" },
+	{ "<leader>aa", function() require("sidekick.cli").toggle() end,             desc = "Toggle Copilot CLI" },
+	{ "<leader>as", function() require("sidekick.cli").select({ auto = true }) end, desc = "Attach Copilot CLI" },
+	{ "<leader>ad", function() require("sidekick.cli").close() end,              desc = "Detach CLI Session" },
+	{ "<leader>at", function() require("sidekick.cli").send({ msg = "{this}" }) end,      mode = { "n", "x" }, desc = "Send This" },
+	{ "<leader>af", function() require("sidekick.cli").send({ msg = "{file}" }) end,      desc = "Send File" },
+	{ "<leader>av", function() require("sidekick.cli").send({ msg = "{selection}" }) end, mode = { "x" },      desc = "Send Visual Selection" },
+	{ "<leader>ap", function() require("sidekick.cli").prompt() end,             mode = { "n", "x" }, desc = "Select Prompt" },
+
 	-- Select all
-	{ '<leader>a', "ggVG", desc = "Select all lines" },
+	{ '<leader>v',  group = 'View/Select' },
+	{ '<leader>va', "ggVG", desc = "Select all lines" },
 
 	-- Style
 	{ '<leader>s',  group = 'Style' },
@@ -64,11 +77,11 @@ wk.add({
 	{ "<leader>xx",   "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",                                 desc = "Buffer Diagnostics", },
 	{ "<leader>xX",   "<cmd>Trouble diagnostics toggle<cr>",                                              desc = "Diagnostics", },
 
-	-- Resizing splits
-	{ "+",            ":resize +2<CR>",                                                                   desc = "Increase split height" },
-	{ "_",            ":resize -2<CR>",                                                                   desc = "Decrease split height" },
-	{ "=",            ":vertical resize +2<CR>",                                                          desc = "Increase split width" },
-	{ "-",            ":vertical resize -2<CR>",                                                          desc = "Decrease split width" },
+	-- Resizing splits (supports count, e.g. 5+ resizes by 5*2)
+	{ "+",            function() vim.cmd("resize +" .. (vim.v.count1 * 2)) end,                           desc = "Increase split height" },
+	{ "_",            function() vim.cmd("resize -" .. (vim.v.count1 * 2)) end,                           desc = "Decrease split height" },
+	{ "=",            function() vim.cmd("vertical resize +" .. (vim.v.count1 * 2)) end,                  desc = "Increase split width" },
+	{ "-",            function() vim.cmd("vertical resize -" .. (vim.v.count1 * 2)) end,                  desc = "Decrease split width" },
 
 	-- LSP
 	{ "gD",           function() fzf.lsp_definitions({ jump1 = true }) end,                               desc = "Go to Definition" },
