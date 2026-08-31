@@ -13,6 +13,7 @@ wk.add({
 	-- Find
 	{ '<leader>f',  group = 'Find' },
 	{ '<leader>ff', function() fzf.files() end,               desc = 'Search Files' },
+	{ '<leader>fF', function() fzf.files({ hidden = true, no_ignore = true }) end, desc = 'Search Files (include hidden)' },
 	{ '<leader>fg', function() fzf.live_grep() end,           desc = 'Grep Files' },
 	{ '<leader>fb', function() fzf.buffers() end,             desc = 'Search Buffers' },
 	{ '<leader>fh', function() fzf.help_tags() end,           desc = 'Search Help Tags' },
