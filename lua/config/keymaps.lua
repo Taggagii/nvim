@@ -10,14 +10,19 @@ local zoom = require('helpers.zoom')
 -- control backspace
 vim.keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true });
 
--- Sidekick: jump to / apply Copilot Next Edit Suggestion, falling back to a normal <Tab>
-vim.keymap.set({ "n", "i" }, "<Tab>", function()
-	if not require("sidekick").nes_jump_or_apply() then
-		return "<Tab>"
-	end
-end, { expr = true, desc = "Goto/Apply Next Edit Suggestion" })
-
 wk.add({
+	-- Sidekick: jump to / apply Copilot Next Edit Suggestion, falling back to a normal <Tab>
+	{
+		"<Tab>",
+		function()
+			if not require("sidekick").nes_jump_or_apply() then
+				return "<Tab>"
+			end
+		end,
+		mode = { "n", "i" },
+		expr = true,
+		desc = "Goto/Apply Next Edit Suggestion",
+	},
 	-- Find
 	{ '<leader>f',  group = 'Find' },
 	{ '<leader>ff', function() fzf.files() end,               desc = 'Search Files' },
@@ -45,6 +50,14 @@ wk.add({
 	{ "<leader>af", function() require("sidekick.cli").send({ msg = "{file}" }) end,      desc = "Send File" },
 	{ "<leader>av", function() require("sidekick.cli").send({ msg = "{selection}" }) end, mode = { "x" },      desc = "Send Visual Selection" },
 	{ "<leader>ap", function() require("sidekick.cli").prompt() end,             mode = { "n", "x" }, desc = "Select Prompt" },
+	{
+		"<leader>an",
+		function()
+			require("sidekick.nes").toggle()
+			print("Sidekick NES suggestions " .. (require("sidekick.nes").enabled and "enabled" or "disabled"))
+		end,
+		desc = "Toggle Next Edit Suggestions",
+	},
 
 	-- Select all
 	{ '<leader>v',  group = 'View/Select' },

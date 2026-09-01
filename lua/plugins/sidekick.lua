@@ -3,6 +3,11 @@
 return {
 	"folke/sidekick.nvim",
 	opts = {
+		-- Automatic Next Edit Suggestions are off by default; toggle back on with
+		-- <leader>an (see keymaps.lua).
+		nes = {
+			enabled = false,
+		},
 		-- Only Copilot CLI is in use for now, so it's the only tool registered.
 		-- Once other tools are wanted again, add them back here and the keymaps'
 		-- toggle()/select() calls will show a picker instead of defaulting.
