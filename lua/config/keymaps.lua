@@ -5,6 +5,7 @@ local wk = require('which-key')
 local browser = require('helpers.browser')
 local formatting = require('helpers.formatting')
 local autosession = require('helpers.autosession')
+local zoom = require('helpers.zoom')
 
 -- control backspace
 vim.keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true });
@@ -82,6 +83,7 @@ wk.add({
 	{ "_",            function() vim.cmd("resize -" .. (vim.v.count1 * 2)) end,                           desc = "Decrease split height" },
 	{ "=",            function() vim.cmd("vertical resize +" .. (vim.v.count1 * 2)) end,                  desc = "Increase split width" },
 	{ "-",            function() vim.cmd("vertical resize -" .. (vim.v.count1 * 2)) end,                  desc = "Decrease split width" },
+	{ "<C-w>z",       zoom.toggle,                                                                       desc = "Toggle window zoom" },
 
 	-- LSP
 	{ "gD",           function() fzf.lsp_definitions({ jump1 = true }) end,                               desc = "Go to Definition" },
