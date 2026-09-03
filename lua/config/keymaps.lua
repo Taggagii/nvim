@@ -128,26 +128,16 @@ wk.add({
 	{
 		"<leader>mol",
 		function()
-			local prev_buf = vim.api.nvim_get_current_buf()
-			vim.cmd("term lazygit")
-			local term_buf = vim.api.nvim_get_current_buf()
-			vim.cmd("startinsert")
-			vim.api.nvim_create_autocmd("TermClose", {
-				buffer = term_buf,
-				once = true,
-				callback = function()
+			local win, buf = vim.api.nvim_get_current_win(), vim.api.nvim_get_current_buf()
+			vim.cmd("hide enew")
+			vim.fn.termopen("lazygit", {
+				on_exit = function()
 					vim.schedule(function()
-						if vim.api.nvim_buf_is_valid(prev_buf) then
-							vim.cmd("buffer " .. prev_buf)
-						else
-							vim.cmd("enew")
-						end
-						if vim.api.nvim_buf_is_valid(term_buf) then
-							vim.api.nvim_buf_delete(term_buf, { force = true })
-						end
+						vim.api.nvim_win_set_buf(win, buf)
 					end)
 				end,
 			})
+			vim.cmd("startinsert")
 		end,
 		desc = "Open current project in lazygit"
 	},
