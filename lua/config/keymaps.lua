@@ -90,6 +90,7 @@ wk.add({
 	{ "<leader>x",    group = "Diagnostics" },
 	{ "<leader>xx",   "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",                                 desc = "Buffer Diagnostics", },
 	{ "<leader>xX",   "<cmd>Trouble diagnostics toggle<cr>",                                              desc = "Diagnostics", },
+	{ "<leader>xa",   function() vim.lsp.buf.code_action() end,                                           desc = "Code Action (Fix)", },
 
 	-- Resizing splits (supports count, e.g. 5+ resizes by 5*2)
 	{ "+",            function() vim.cmd("resize +" .. (vim.v.count1 * 2)) end,                           desc = "Increase split height" },
