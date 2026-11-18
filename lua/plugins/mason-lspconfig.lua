@@ -5,6 +5,10 @@ return {
         {
 			"mason-org/mason.nvim",
 			opts = {
+				registries = {
+					"github:mason-org/mason-registry",
+					"github:Crashdummyy/mason-registry", -- provides roslyn
+				},
 				ensure_installed = {
 					"prettier",
         			"js-debug-adapter"

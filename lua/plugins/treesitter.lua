@@ -1,22 +1,18 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
-  build = ':TSUpdate'
-}
+  build = ':TSUpdate',
+  config = function()
+    require('nvim-treesitter').install({ 'javascript', 'tsx' })
+    vim.treesitter.language.register('javascript', 'javascriptreact')
+    vim.treesitter.language.register('tsx', 'typescriptreact')
 
--- return {
--- 	'nvim-treesitter/nvim-treesitter',
--- 	build = ":TSUpdate",
--- 	config = function()
--- 		require("nvim-treesitter.install").compilers = { "zig", "clang" }
---
--- 		local configs = require("nvim-treesitter.configs")
---
--- 		configs.setup({
--- 			ensure_installed = { },
--- 			sync_install = false,
--- 			highlight = { enable = true },
--- 			indent = { enable = true },
--- 		})
--- 	end
--- }
+    vim.api.nvim_create_autocmd('FileType', {
+      group = vim.api.nvim_create_augroup('JsxIndent', { clear = true }),
+      pattern = { 'javascriptreact', 'typescriptreact' },
+      callback = function()
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end,
+    })
+  end,
+}
