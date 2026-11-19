@@ -2,8 +2,7 @@ require("config.keymaps")
 require("config.autocmds")
 local os = require("helpers.os")
 
--- for config to not do silly things
-vim.g.editorconfig = false
+vim.g.editorconfig = true
 
 -- for left numbers
 vim.opt.number = true
@@ -28,12 +27,10 @@ if system == "windows" or system == "wsl" then
 end
 vim.opt.clipboard = "unnamedplus"
 
--- for matting
-local indentAmount = 2
-vim.opt.tabstop = indentAmount
-vim.opt.shiftwidth = indentAmount
-vim.opt.softtabstop = indentAmount
--- vim.opt.expandtab = false
+-- Fallback indentation; EditorConfig and vim-sleuth override this per buffer.
+vim.opt.tabstop = 8
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = -1
 
 -- for wrapping
 vim.opt.wrap = true

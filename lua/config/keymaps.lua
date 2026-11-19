@@ -67,7 +67,6 @@ wk.add({
 	{ '<leader>s',  group = 'Style' },
 	{ '<leader>sf', function() formatting.format_file() end,  desc = "Eslint Fix All" },
 	{ '<leader>sa', function() vim.lsp.buf.code_action() end, desc = "Code Action" },
-	
 	{ '<leader>ss',  group = 'Spell Check' },
 	{
 		'<leader>sst',
@@ -105,7 +104,22 @@ wk.add({
 	-- Misc
 	{ "<leader>m",    group = "Misc" },
 
-	-- We're not using this extension anymore
+	-- Folding [f]
+	{
+		'<leader>mf',
+		function()
+			if vim.fn.foldclosed('.') ~= -1 then
+				vim.cmd('normal! zo')
+			else
+				-- Manual mode preserves existing folds and allows folding an exact pair.
+				vim.wo.foldmethod = 'manual'
+				vim.wo.foldenable = true
+				vim.cmd('normal zf%')
+			end
+		end,
+		desc = "Fold tag/bracket pair or open fold",
+	},
+
 	-- Markdown Viewing [m]
 	{ "<leader>mm",   group = "Markdown" },
 	{ "<leader>mmp",  "<CMD>MarkdownPreviewToggle<CR>",                                                   desc = "Toggle Markdown Preview" },
